@@ -1,17 +1,122 @@
 <!DOCTYPE html>
+<script>
+  function changeButton(myId){
+    const myDiv = document.getElementById("filterButton").children;
+    for(let i=0; i < myDiv.length ; i++){
+      if (myDiv[i].id === myId){
+        myDiv[i].classList.add("selected");
+      }
+      else{
+        myDiv[i].classList.remove("selected");
+      }
+    }
+    
+
+  }
+</script>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <title>Les recettes de PolyEats - Trouver une recette</title>
+    <link rel="stylesheet" type="text/css"
+    href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
   </head>
   <body>
     <header>
-      <nav>
-        <ul>
-          <li><a href="./contact.html">Contact</a></li>
-        </ul>
-      </nav>
+      <div class="header-container">
+        <a href="./index.html">
+          <img class="logo" src="assets/img/logo.png" alt="logo"></img>
+        </a>
+        <nav>
+          <ul>
+            <li> <a href="./index.html">Accueil</a></li>
+            <li class= "active"> <a href="./recettes.html">Trouver une recette</a></li>
+            <li> <a href="./ajouter_recette.html">Ajouter une recette</a></li>
+            <li> <a href="./contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
-    <main></main>
+    <main>
+      <div id="filterButton" class=" btn-group recettes-type">
+        <button id="selecBtn1" onclick="changeButton('selecBtn1')">Toutes les recettes</button>
+        <button id="selecBtn2" onclick="changeButton('selecBtn2')">Recettes végétariennes</button>
+        <button id="selecBtn3" onclick="changeButton('selecBtn3')">Recettes méditerranéennes</button>
+        <button id="selecBtn4" onclick="changeButton('selecBtn4')">Recettes ketos</button>
+      </div>
+
+      <article class="justify-container">
+        <h1>Recettes</h1>
+        <p class="right-header">6 recetttes</p>
+      </article>
+
+      <div id="recettes-list" class="recettes">
+        <div class="recette-container">
+          <a class="recette-link" href="./recette.html">
+            <p class="recette">
+              <h2>Bol protéiné à la mexicaine</h2>
+              <img src="assets/img/bol_mexicain.jpg" alt="image bol mexicain"></img>
+              <div class="time">
+                <p><i class="far fa-clock"></i> 40 minutes</p>
+              </div>
+            </p>
+          </a>
+          <a class="recette-link" href="./recette.html">
+            <p class="recette">
+              <h2>Boeuf style BBQ Coréen</h2>
+              <img src="assets/img/boeuf_coreen.jpg" alt="image boeuf coreen"></img>
+              <div class="time">
+                <p><i class="far fa-clock"></i> 25 minutes</p>
+              </div>
+            </p>
+          </a>
+          <a class="recette-link" href="./recette.html">
+            <p class="recette">
+              <h2>Panzanella au sous-marin à l'italienne</h2>
+              <img src="assets/img/panzanella.jpg" alt="image panzanella"></img>
+              <div class="time">
+                <p><i class="far fa-clock"></i> 30 minutes</p>
+              </div>
+            </p>
+          </a>
+          <a class="recette-link" href="./recette.html">
+            <p class="recette">
+              <h2>Tofu croustillant de Mongolie</h2>
+              <img src="assets/img/tofu.jpg" alt="image tofu"></img>
+              <div class="time">
+                <p><i class="far fa-clock"></i> 30 minutes</p>
+              </div>
+            </p>
+          </a>
+          <a class="recette-link" href="./recette.html">
+            <p class="recette">
+              <h2>Brochettes de saumon caprese</h2>
+              <img src="assets/img/brochette.jpg" alt="image brochette"></img>
+              <div class="time">
+                
+                <p><i class="far fa-clock"></i> 25 minutes</p>
+              </div>
+            </p>
+          </a>
+          <a class="recette-link" href="./recette.html">
+            <p class="recette">
+              <h2>Gnocchi croustillants avec champignons</h2>
+              <img src="assets/img/gnocchi.jpg" alt="image gnocchi"></img>
+              <div class="time">
+                
+                <p><i class="far fa-clock"></i> 30 minutes</p>
+              </div>
+            </p>
+          </a>
+        </div>
+      
+      
+          
+    
+    </main>
+    <footer class="piedDePage">
+      <p>Par : Nicolas Lauzon - 1959682 et Nour El Houda Lharch - 1886051</p>
+    </footer>
   </body>
 </html>

@@ -3,16 +3,144 @@
   <head>
     <meta charset="UTF-8" />
     <title>Les recettes de PolyEats - Recette</title>
+    <link rel="stylesheet" type="text/css"
+    href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
   </head>
+
+<!--- voir si on doit faire un jquery pour lire le json ou le faire à la main --->
   <body>
     <header>
-      <nav>
-        <ul>
-          <li><a href="./contact.html">Contact</a></li>
-        </ul>
-      </nav>
+      <div class="header-container">
+        <a href="./index.html">
+          <img class="logo" src="assets/img/logo.png" alt="logo"></img>
+        </a>
+        <nav>
+          <ul>
+            <li> <a href="./index.html">Accueil</a></li>
+            <li class= "active"> <a href="./recettes.html">Trouver une recette</a></li>
+            <li> <a href="./ajouter_recette.html">Ajouter une recette</a></li>
+            <li> <a href="./contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
-    <main></main>
+
+    <main>
+      <div class="recette-header">
+        <h1 >
+          Bol protéiné à la mexicaine
+          <button class="btn" id="print-btn" onclick="window.print()">Imprimer</button>
+        </h1>
+      </div>
+      <section class="recette-first-section">
+        <div >
+          <img class="recette-image" src="assets/img/bol_mexicain.jpg" alt="image bol mexicain"></img>
+        </div>
+        <div>
+          <h3>Liste d'ingredients</h3>
+          <ul id="list-ingredients" class="check-list">
+            <li>
+              <input type="checkbox">
+              <label> 150g de quinoa blanc</label><br>
+              <input type="checkbox">
+              <label> 235g de fromage halloumi</label><br>
+              <input type="checkbox">
+              <label> 1 boite de conserve de pois chiches</label><br>
+              <input type="checkbox">
+              <label> 1 oignon jaune</label><br>
+              <input type="checkbox">
+              <label> 1 tomate</label><br>
+              <input type="checkbox">
+              <label> 1 coriandre</label><br>
+              <input type="checkbox">
+              <label> 15ml de melange d'epices (poudre d'ail, chipotle, cumin)</label><br>
+              <input type="checkbox">
+              <label> 1 lime</label><br>
+              <input type="checkbox">
+              <label> 35g de creme sure</label><br>
+            </li>
+          </ul>
+          <h3>Le necessaire pour la cuisson</h3>
+          <ul id="list-outils" class="check-list">
+            <li>
+              <input type="checkbox">
+              <label>Plaque de cuisson</label><br>
+              <input type="checkbox">
+              <label>bols</label><br>
+              <input type="checkbox">
+              <label>casserole</label><br>
+              <input type="checkbox">
+              <label>poêle</label><br>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <h2>Les etapes a suivre pour une recette reussite!</h2>
+      <section class="recette-container">
+        <div class="etape-recette">
+          <p>
+            <img src="assets/img/bol_mexicain_1.jpg" alt="bol mexicain etape 1"></img>
+            <h2>1.Faire les pois chiches croustillants</h2>
+            <p>
+              Préchauffer le four à 425°F et amener une casserole d'eau à ébullition. Étendre les pois chiches sur une plaque de cuisson. Ajouter le mélange d'épices, au goût (attention! épicé) et un filet d'huile d'olive. Si désiré, utiliser une épice appréciée des enfants pour une partie des pois chiche. Saler et poivrer et cuire au four 20-25 minutes.
+            </p>
+          </p>
+        </div>
+        <div class="etape-recette">
+          <p>
+            <img src="assets/img/bol_mexicain_2.jpg" alt="bol mexicain etape 2"></img>
+            <h2>2.Cuire le quinoa</h2>
+            <p>
+              Rincer le quinoa. Une fois l'eau bouillante, ajouter le quinoa et cuire 14-15 minutes jusqu'à tendreté. Égoutter et réserver.
+            </p>
+          </p>
+        </div>
+        <div class="etape-recette">
+          <p>
+            <img src="assets/img/bol_mexicain_3.jpg" alt="bol mexicain etape 3"></img>
+            <h2>3.Mise en place</h2>
+            <p>
+              Hacher la coriandre et l'oignon. Couper la tomate en dés. Zester la lime et couper en deux. Trancher le halloumi.
+            </p>
+          </p>
+        </div>
+        <div class="etape-recette">
+          <p>
+            <img src="assets/img/bol_mexicain_4.jpg" alt="bol mexicain etape 4"></img>
+            <h2>4.Cuire le halloumi</h2>
+            <p>
+              Dans un poêle, à feu moyen-élevé, cuire les tranches de halloumi environ 2-3 minutes de chaque côté jusqu'à coloration.
+            </p>
+          </p>
+        </div>
+        <div class="etape-recette">
+          <p>
+            <img src="assets/img/bol_mexicain_5.jpg" alt="bol mexicain etape 5"></img>
+            <h2>5.Faire le pico de gallo et la sauce</h2>
+            <p>
+              Dans un bol, mélanger les tomates, les oignons, la coriandre et le jus d'une demi-lime. Bien mélanger et saler et poivrer. Dans un autre bol, mélanger la crème sure avec le zeste de lime, le jus d'une demi-lime et un filet d'huile d'olive. Saler et poivrer et bien mélanger.
+            </p>
+          </p>
+        </div>
+        <div class="etape-recette">
+          <p>
+            <img src="assets/img/bol_mexicain_6.jpg" alt="bol mexicain etape 6"></img>
+            <h2>6.Monter l'assiette</h2>
+            <p>
+              Servir le quinoa avec les pois chiches croustillants, le halloumi et le pico de gallo. Garnir avec la sauce. Bon appétit!
+            </p>
+          </p>
+        </div>
+      </section>
+      
+
+    </main>
+
+
+    <footer class="piedDePage">
+      <p>Par : Nicolas Lauzon - 1959682 et Nour El Houda Lharch - 1886051</p>
+    </footer>
   </body>
 </html>
