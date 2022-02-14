@@ -35,7 +35,7 @@ export default class RecipeManager {
   filterRecipes (category) {
     const filteredList = [];
     for (const index in this.recipeList) {
-      if (this.recipeList[index].category === category) {
+      if (this.recipeList[index].category === category || category === undefined) {
         filteredList.push(this.recipeList[index]);
       }
     }
