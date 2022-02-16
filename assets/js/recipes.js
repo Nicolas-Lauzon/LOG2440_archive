@@ -15,7 +15,6 @@ displayRecipes();
 function configureFilters () {
   const allButtons = document.getElementById("recipes-filters").getElementsByTagName("button");
 
- 
   Array.prototype.forEach.call(allButtons, (value) => {
     value.addEventListener("click", () => {
       for (let buttonIndex = 0; buttonIndex < allButtons.length; buttonIndex++) {

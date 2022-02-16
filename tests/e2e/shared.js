@@ -83,5 +83,5 @@ module.exports = {
       browser.verify.ok(result !== "", "Le pied de page contient du texte.");
     });
     browser.log("\n===== FIN Pied de page =====");
-  }
+  },
 };
