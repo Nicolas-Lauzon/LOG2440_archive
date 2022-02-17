@@ -12,7 +12,7 @@ export default class RecipeManager {
    */
   addRecipe (recipe) {
     this.recipeList[recipe.id] = recipe;
-    this.storageManager.addRecipe(recipe);
+    this.storageManager.saveData(recipe);
   }
 
   /**
