@@ -23,7 +23,7 @@ export default class RecipeManager {
    */
   getRecipe (id) {
     const allDataInStorage = this.storageManager.getData();
-    return allDataInStorage[id];
+    return allDataInStorage[id - 1];
   }
 
   /**

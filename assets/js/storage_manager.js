@@ -12,12 +12,9 @@ export default class StorageManager {
    * Charge les donnés de "recipes" dans LocalStorage si le storage ne les contient pas déjà
    */
   loadDataFromFile () {
-    const startingData = recipes;
-    for (const i in startingData.recipes) {
-      const currentId = startingData.recipes[i].id;
-      if (localStorage.getItem(currentId) === null) {
-        localStorage.setItem(currentId, JSON.stringify(startingData.recipes[i]));
-      }
+    if (localStorage.getItem("allRecipes") === null) {
+      const startingData = recipes;
+      localStorage.setItem("allRecipes", JSON.stringify(startingData));
     }
   }
 
@@ -26,10 +23,10 @@ export default class StorageManager {
    * @returns les recettes du LocalStorage
    */
   getData () {
-    const allKeys = Object.keys(localStorage);
     const recipesInStorage = [];
-    for (const j in allKeys) {
-      recipesInStorage[allKeys[j]] = JSON.parse(localStorage.getItem(allKeys[j].toString()))
+    const allRecipes = JSON.parse(localStorage.getItem("allRecipes".toString()));
+    for (const j in allRecipes.recipes) {
+      recipesInStorage[j] = allRecipes.recipes[j];
     }
     return recipesInStorage;
   }
@@ -39,8 +36,12 @@ export default class StorageManager {
    * @param {*} newRecipe nouvelle recette à ajouter dans le storage
    */
   saveData (newRecipe) {
-    const keyToSave = newRecipe.id;
-    localStorage.setItem(keyToSave, JSON.stringify(newRecipe));
+    const currentDataStored = this.getData();
+    currentDataStored.push(newRecipe);
+    const objectToSave = {
+      recipes: currentDataStored
+    }
+    localStorage.setItem("allRecipes", JSON.stringify(objectToSave));
   }
 
   /**
