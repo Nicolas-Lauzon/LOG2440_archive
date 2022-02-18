@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Les recettes de PolyEats - Recette</title>
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    <script type="module" src="./assets/js/recipe.js"></script>
+  </head>
+  <body>
+    <!-- Source de la recette: https://www.chefcookit.com/recipes/bol_proteines_mexicain -->
+    <header>
+      <div class="header-container justify-container">
+        <div class="logo">
+          <a href="./index.html">
+            <img alt="logo" src="./assets/img/logo.png" title="Accueil" />
+          </a>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="./index.html">Accueil</a></li>
+            <li class="active">
+              <a href="./recipes.html">Trouver une recette</a>
+            </li>
+            <li><a href="./add_recipe.html">Ajouter une recette</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <article id="recipe-article">
+        <h1 class="recipe-header"></h1>
+        <button class="btn" onclick="window.print()" id="print-btn">Imprimmer</button>
+        <div class="row">
+          <div class="col">
+            <img class="recipe-image" alt="Bol protéiné à la mexicaine" src="./assets/img/bol_mexicain.jpg" />
+          </div>
+          <div class="col">
+            <section>
+              <h2>Liste d'ingrédients</h2>
+              <ul class="check-list" id="list-ingredients">
+                <!---TODO : Enlever le contenu du UL et générer le HTML avec JavaScript-->
+                <li><input type="checkbox" /><label>150g de quinoa blanc</label></li>
+              </ul>
+            </section>
+            <section>
+              <h2>Le nécessaire pour la cuisson</h2>
+              <ul class="check-list" id="tools-list">
+                <!---TODO : Enlever le contenu du UL et générer le HTML avec JavaScript-->
+                <li><input type="checkbox" /><label>Plaque de cuisson</label></li>
+              </ul>
+            </section>
+          </div>
+        </div>
+
+        <h1>Les étapes à suivre pour une recette réussite!</h1>
+        <div class="recipe-container">
+          <!---TODO : Enlever le contenu du DIV et générer le HTML avec JavaScript-->
+          <div class="recipe-step" id="recipe-step-1">
+            <img class="recipe-image" alt="Bol protéiné à la mexicaine, étape 1" src="./assets/img/bol_mexicain_1.jpg" />
+            <h2>1. Faire les pois chiches croustillants</h2>
+            <p>
+              Préchauffer le four à 425°F et amener une casserole d'eau à ébullition. Étendre les
+              <b>pois chiches</b> sur une plaque de cuisson. Ajouter le <b>mélange d'épices</b>, au goût (attention! épicé) et un filet d'huile
+              d'olive. Si désiré, utiliser une épice appréciée des enfants pour une partie des pois chiche. Saler et poivrer et cuire au four
+              <u>20-25 minutes</u>.
+            </p>
+          </div>
+
+          <div class="recipe-step" id="recipe-step-2">
+            <img class="recipe-image" alt="Bol protéiné à la mexicaine, étape 2" src="./assets/img/bol_mexicain_2.jpg" />
+            <h2>2. Cuire le quinoa</h2>
+            <p>
+              Rincer le <b>quinoa</b>. Une fois l'eau bouillante, ajouter le <b>quinoa</b> et cuire <u>14-15 minutes</u> jusqu'à tendreté. Égoutter et
+              réserver.
+            </p>
+          </div>
+
+          <div class="recipe-step" id="recipe-step-3">
+            <img class="recipe-image" alt="Bol protéiné à la mexicaine, étape 3" src="./assets/img/bol_mexicain_3.jpg" />
+            <h2>3. Mise en place</h2>
+            <p>
+              Hacher la <b>coriandre</b> et <b>l'oignon</b>. Couper la <b>tomate</b> en dés. Zester la <b>lime</b> et couper en deux. Trancher le
+              <b>halloumi</b>.
+            </p>
+          </div>
+
+          <div class="recipe-step" id="recipe-step-4">
+            <img class="recipe-image" alt="Bol protéiné à la mexicaine, étape 4" src="./assets/img/bol_mexicain_4.jpg" />
+            <h2>4. Cuire le halloumi</h2>
+            <p>
+              Dans un poêle, à feu moyen-élevé, cuire les
+              <b>tranches de halloumi</b> environ <u>2-3 minutes</u> de chaque côté jusqu'à coloration.
+            </p>
+          </div>
+
+          <div class="recipe-step" id="recipe-step-5">
+            <img class="recipe-image" alt="Bol protéiné à la mexicaine, étape 5" src="./assets/img/bol_mexicain_5.jpg" />
+            <h2>5. Faire le pico de gallo et la sauce</h2>
+            <p>
+              Dans un bol, mélanger les <b>tomates</b>, les <b>oignons</b>, la <b>coriandre</b> et le <b>jus d'une demi-lime</b>. Bien mélanger et
+              saler et poivrer. Dans un autre bol, mélanger la <b>crème sure</b> avec le <b>zeste de lime</b>, le <b>jus d'une demi-lime</b> et un
+              filet d'huile d'olive. Saler et poivrer et bien mélanger.
+            </p>
+          </div>
+
+          <div class="recipe-step" id="recipe-step-6">
+            <img class="recipe-image" alt="Bol protéiné à la mexicaine, étape 6" src="./assets/img/bol_mexicain_6.jpg" />
+            <h2>6. Monter l'assiette</h2>
+            <p>
+              Servir le <b>quinoa</b> avec les <b>pois chiches croustillants</b>, le <b>halloumi</b> et le <b>pico de gallo</b>. Garnir avec la
+              <b>sauce</b>. Bon appétit!
+            </p>
+          </div>
+        </div>
+      </article>
+    </main>
+    <footer>
+      <p>Par étudiant.e 1 et étudiant.e 2</p>
+    </footer>
+  </body>
+</html>
