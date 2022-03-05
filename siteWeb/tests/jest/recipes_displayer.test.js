@@ -10,7 +10,6 @@ describe("Afficheur de recettes", () => {
     const counter = document.createElement("span");
     counter.setAttribute("id", "recipes-count");
     counter.innerText = "6 recettes";
-    
     document.body.appendChild(recipeList);
     document.body.appendChild(counter);
   };
@@ -40,6 +39,12 @@ describe("Afficheur de recettes", () => {
 
   it(" updateRecipesNumber should change the number of recipes in HTML", () => {
     displayer.updateRecipesNumber(3);
-    expect(counter.innerHTML).toEqual("3 recettes");
+    const htmlCounterValue = document.getElementById("recipes-count").innerText;
+    expect(htmlCounterValue).toEqual("3 recettes");
+  });
+
+  it(" displayRecipes should create a <p> element for the time", () => {
+    displayer.displayRecipes([{ "id": 0, "name": "myname", "img": "fakeimg", "ingredients": [{ "name": "fake ing name" }] }]);
+    expect(document.getElementById("recipes-list").contains(document.getElementsByClassName("time")[0])).toBeTruthy();
   });
 });
