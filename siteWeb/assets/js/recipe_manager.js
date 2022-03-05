@@ -48,6 +48,13 @@ export default class RecipeManager {
    * @returns les recettes filtrés par ingrédient
    */
   filterByIngredient (ingredient, matchExact) {
-    return [];
+    const recipes = this.storageManager.getData().recipes;
+
+    if (matchExact) {
+      const filtered = recipes.filter((x) => x.ingredients.filter((y) => y.name === ingredient).length > 0);
+      return filtered;
+    }
+    const filtered = recipes.filter((x) => x.ingredients.filter((y) => y.name.includes(ingredient)).length > 0);
+    return filtered;
   }
 }
