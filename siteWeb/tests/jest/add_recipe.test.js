@@ -49,9 +49,21 @@ describe("Ajouter recette test", () => {
     clearHTML();
   });
 
-  it(" resetData should call resetData method from storageManager", () => { });
+  it(" resetData should call resetData method from storageManager", () => {
+    const resetDataStorageSpy = jest.spyOn(storageManager, "resetData");
+    export_recipe(storageManager, form);
+    document.getElementById("reset").click();
+    expect(resetDataStorageSpy).toBeCalled();
+  });
 
-  it(" addStep should add a new step to steps section in form", () => { });
+  it(" addStep should add a new step to steps section in form", () => {
+    export_recipe(storageManager, form);
+    const stepAmountBefore = document.getElementById("steps").children.length;
+    expect(stepAmountBefore).toEqual(2);
+    document.getElementById("add-step").click();
+    const stepAmountAfter = document.getElementById("steps").children.length;
+    expect(stepAmountAfter).toEqual(3);
+  });
 
   it(" submit event should call submitForm function on submit", async () => {
     const submitFormSpy = jest.spyOn(form, "submitForm");
