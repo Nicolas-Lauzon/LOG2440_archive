@@ -42,9 +42,17 @@ describe("Recettes test", () => {
     clearHTML();
   });
 
-  it(" clicking on filter2 should add the class selected to filter2", () => { });
+  it(" clicking on filter2 should add the class selected to filter2", () => {
+    const filter2Button = document.getElementById("recipes-filters").children[1];
+    filter2Button.click();
+    expect(filter2Button.classList[0]).toEqual("selected");
+  });
 
-  it(" submiting the form should call displayResearch", () => { });
+  it(" submiting the form should call displayResearch", () => {
+    const displayResearchSpy = jest.spyOn(displayer, "displayResearch");
+    document.getElementById("search-form").submit();
+    expect(displayResearchSpy).toBeCalled();
+  });
 
   it(" submiting the form should not remove selected class if no buttons are selected", () => {
     const form = document.getElementById("search-form");
