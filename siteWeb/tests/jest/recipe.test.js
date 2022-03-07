@@ -13,5 +13,9 @@ describe("Recette test", () => {
     localStorage.clear();
   });
 
-  it(" should call getRecipe from recipeManager", () => { });
+  it(" should call getRecipe from recipeManager", () => {
+    const getRecipSpy = jest.spyOn(recipeManager, "getRecipe").mockImplementation(() => {});
+    loadRecipe(recipeManager);
+    expect(getRecipSpy).toBeCalled();
+  });
 });
