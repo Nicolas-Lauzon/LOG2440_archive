@@ -12,12 +12,26 @@ describe("Form test", () => {
     localStorage.clear();
   });
 
-  it(" should return a fieldset element when createStep is called", () => { });
+  it(" should return a fieldset element when createStep is called", () => {
+    const returnedForm = form.createStep(1);
+    expect(returnedForm.type).toEqual("fieldset");
+  });
 
   it(" should add new recipe to localData when submitForm is called", async () => {
     const formStub = document.createElement("div");
     // TODO : Remplir le formulaire
-    formStub.elements = { };
+    formStub.elements = {
+      ingredient: { value: "ingredient #1:1,ingredient #2:" },
+      tool: { value: "outil #1,outil #2" },
+      name: { value: "stub" },
+      src: { value: "" },
+      time: { value: "10" },
+      type: { value: "keto" },
+      step_name_1: { value: "etape1" },
+      step_name_2: { value: "etape2" },
+      step_description_1: { value: "description1" },
+      step_description_2: { value: "description2" }
+    };
 
     const mockJson = { "recipes": [] }
     const expected = {
