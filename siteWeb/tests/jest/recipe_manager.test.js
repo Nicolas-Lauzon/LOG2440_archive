@@ -59,14 +59,12 @@ describe("RecipeManager test", () => {
    });
 
   it("getRecipe should return undefined when given an invalid id", () => {
-    // const expected = undefined;
     const recipe = recipeManager.getRecipe(100);
     expect(recipe).toBeUndefined();
    });
 
   it("getRecipe should return a recipe when given a valid id", () => {
     const recipe = recipeManager.getRecipe(1);
-    //expect recipe to be the first recipe 
     expect(recipe).not.toBeUndefined();
     expect(recipe).toEqual(storageManager.getData().recipes[0]);
    });
