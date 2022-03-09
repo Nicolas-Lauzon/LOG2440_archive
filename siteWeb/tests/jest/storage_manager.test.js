@@ -25,10 +25,16 @@ describe("StorageManager test", () => {
 
   it("Storage Manager should load recipes if the localStorage is empty", () => {
     const setItemSpy = jest.spyOn(localStorageInstance.__proto__, "setItem").mockImplementation(() => {});
+    storageManager.resetData();
+    storageManager.loadDataFromFile();
+    expect(setItemSpy).toHaveBeenCalled();
+
   });
 
   it("Storage Manager should not load recipes if the localStorage has data", () => {
     const setItemSpy = jest.spyOn(localStorageInstance.__proto__, "setItem").mockImplementation(() => {});
+    storageManager.loadDataFromFile();
+    expect(setItemSpy).not.toHaveBeenCalled();
   });
 
   it("Storage Manager should add a new recipe to LocalStorage", () => {
