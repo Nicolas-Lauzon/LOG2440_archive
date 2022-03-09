@@ -55,7 +55,7 @@ describe("RecipeManager test", () => {
     };
     const spy = jest.spyOn(storageManager, "saveData");
     recipeManager.addRecipe(recipe);
-    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledWith(recipe);
    });
 
   it("getRecipe should return undefined when given an invalid id", () => {

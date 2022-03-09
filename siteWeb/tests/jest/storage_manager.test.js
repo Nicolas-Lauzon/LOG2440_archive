@@ -5,6 +5,7 @@ import { jest } from "@jest/globals";
 describe("StorageManager test", () => {
   let storageManager;
   const recipes = dataRecipes.recipes;
+  let localStorageInstance = global.localStorage;
 
   beforeEach(() => {
     storageManager = new StorageManager();
@@ -71,6 +72,7 @@ describe("StorageManager test", () => {
       ],
       id: 1
     };
+    expect(storageManager.getData().recipes.length).toEqual(5);
     storageManager.saveData(recipe);
     expect(storageManager.getData().recipes.length).toEqual(6);
 
