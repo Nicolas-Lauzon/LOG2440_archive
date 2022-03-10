@@ -56,40 +56,41 @@ describe("RecipeManager test", () => {
     const spy = jest.spyOn(storageManager, "saveData");
     recipeManager.addRecipe(recipe);
     expect(spy).toHaveBeenCalledWith(recipe);
-   });
+  });
 
   it("getRecipe should return undefined when given an invalid id", () => {
-    const recipe = recipeManager.getRecipe(100);
+    const hundred = 100;
+    const recipe = recipeManager.getRecipe(hundred);
     expect(recipe).toBeUndefined();
-   });
+  });
 
   it("getRecipe should return a recipe when given a valid id", () => {
     const recipe = recipeManager.getRecipe(1);
     expect(recipe).not.toBeUndefined();
     expect(recipe).toEqual(storageManager.getData().recipes[0]);
-   });
+  });
 
   describe("filterRecipes test", () => {
     it("filterRecipes should return all recipes when no category is specified", () => {
       const expected = storageManager.getData().recipes.length;
       const recipes = recipeManager.filterRecipes('');
       expect(recipes.length).toEqual(expected);
-     });
+    });
 
     it("filterRecipes should return one recipe when the category is vegetarien", () => {
       const recipes = recipeManager.filterRecipes('vegetarien');
       expect(recipes.length).toEqual(1);
-     });
+    });
 
     it("filterRecipes should return 2 recipe when the category is mediterraneen", () => {
       const recipes = recipeManager.filterRecipes('mediterraneen');
       expect(recipes.length).toEqual(2);
-     });
+    });
 
     it("filterRecipes should return 2 recipe when the category is keto", () => {
       const recipes = recipeManager.filterRecipes('keto');
       expect(recipes.length).toEqual(2);
-     });
+    });
   });
   describe("filterByIngredient test", () => {
     it("filterByIngredient should return an empty list when searching an invalid ingredient", () => {

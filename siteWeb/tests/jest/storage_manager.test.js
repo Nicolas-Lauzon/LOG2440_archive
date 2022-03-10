@@ -5,7 +5,7 @@ import { jest } from "@jest/globals";
 describe("StorageManager test", () => {
   let storageManager;
   const recipes = dataRecipes.recipes;
-  let localStorageInstance = global.localStorage;
+  const localStorageInstance = global.localStorage;
 
   beforeEach(() => {
     storageManager = new StorageManager();
@@ -20,16 +20,15 @@ describe("StorageManager test", () => {
   });
 
   it("Storage Manager should get 5 recipes from LocalStorage", () => {
-    const recipes = storageManager.getData().recipes;
-    expect(recipes.length).toEqual(5);
-   });
+    const expectedLength = 5;
+    expect(recipes.length).toEqual(expectedLength);
+  });
 
   it("Storage Manager should load recipes if the localStorage is empty", () => {
     const setItemSpy = jest.spyOn(localStorageInstance.__proto__, "setItem").mockImplementation(() => {});
     storageManager.resetData();
     storageManager.loadDataFromFile();
     expect(setItemSpy).toHaveBeenCalled();
-
   });
 
   it("Storage Manager should not load recipes if the localStorage has data", () => {
@@ -72,14 +71,15 @@ describe("StorageManager test", () => {
       ],
       id: 1
     };
-    expect(storageManager.getData().recipes.length).toEqual(5);
+    const lengthBefore = 5;
+    expect(storageManager.getData().recipes.length).toEqual(lengthBefore);
     storageManager.saveData(recipe);
-    expect(storageManager.getData().recipes.length).toEqual(6);
-
-   });
+    const expectedLength = 6;
+    expect(storageManager.getData().recipes.length).toEqual(expectedLength);
+  });
 
   it("Storage Manager should clear LocalStorage", () => {
     storageManager.resetData();
     expect(storageManager.getData()).toBeNull();
-   });
+  });
 });
