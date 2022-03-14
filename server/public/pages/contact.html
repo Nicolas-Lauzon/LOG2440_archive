@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Les recettes de PolyEats - Contact</title>
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-container justify-container">
+        <div class="logo">
+          <a href="/">
+            <img alt="logo" src="../img/logo.png" title="Accueil" />
+          </a>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/recipes">Trouver une recette</a></li>
+            <li><a href="/add_recipe">Ajouter une recette</a></li>
+            <li class="active"><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <article>
+        <h1>Contact</h1>
+        <p>Contactez <em>Les recettes de PolyEats</em> via le formulaire suivant:</p>
+        <form class="row form-group" action="/api/contacts" method="POST">
+          <fieldset class="form-control contact-control">
+            <legend>Envoyez-nous un message</legend>
+            <label for="name">Votre nom:</label>
+            <input type="text" id="name" name="name" required />
+
+            <label for="email">Votre adresse courriel:</label>
+            <input type="email" id="email" name="email" required />
+
+            <label for="message">Votre message</label>
+            <textarea name="message" id="message" name="message" required></textarea>
+          </fieldset>
+
+          <input class="btn" type="submit" value="Envoyez le message" />
+        </form>
+        <section class="row contact-info" aria-label="Informations de contact">
+          <div class="col">
+            <i class="fa fa-mobile-alt fa-5x"></i><br />
+            <a href="tel:5143404711">(514) 340-4711</a>
+          </div>
+
+          <div class="col">
+            <i class="fa fa-map-marker-alt fa-5x"></i>
+            <p class="address">
+              2900, boul. Édouard-Montpetit<br />
+              Montréal (Québec)<br />
+              H3T 1J4
+            </p>
+          </div>
+
+          <div class="col">
+            <i class="fa fa-envelope fa-5x"></i><br />
+            <a href="mailto:recettesPolyEats@polymtl.ca">recettesPolyEats@polymtl.ca</a>
+          </div>
+        </section>
+      </article>
+    </main>
+    <footer>
+      <p>Par étudiant.e 1 et étudiant.e 2</p>
+    </footer>
+  </body>
+</html>
