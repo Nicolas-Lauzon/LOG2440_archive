@@ -34,7 +34,7 @@ app.use("/api/contacts", contactsRoutes.router);
  * afin de les remplacer par le GET (/*) général défini plus bas
  *
  */
-app.get("/", (request, response) => {
+/*app.get("/", (request, response) => {
   response.sendFile(PUBLIC_PATH + "pages/index.html");
 });
 
@@ -56,7 +56,7 @@ app.get("/contact", (request, response) => {
 
 app.get("/admin", (request, response) => {
   response.sendFile(PUBLIC_PATH + "pages/admin.html");
-});
+});*/
 
 /**
  * Middleware qui est exécuté à chaque requête pour retourner le fichier HTML correspondant
@@ -66,8 +66,14 @@ app.get("/admin", (request, response) => {
 app.get("/*", async (request, response) => {
   let currentRoute = request.path.split("/")[1];
   currentRoute = currentRoute === "" ? "index" : currentRoute;
-  // TODO
-  response.status(501).end();
+  try {
+    await fileSystemManager.checkFile(PUBLIC_PATH + "/pages/" + currentRoute + ".html");
+    response.sendFile(PUBLIC_PATH + "pages/" + currentRoute + ".html");
+    response.status(HTTP_STATUS.SUCCESS);
+  } catch (error) {
+    response.sendFile(PUBLIC_PATH + "pages/" + "error.html");
+    response.status(HTTP_STATUS.NOT_FOUND);
+  }
 });
 
 /**
