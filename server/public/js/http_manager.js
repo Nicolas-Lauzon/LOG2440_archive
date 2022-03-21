@@ -48,8 +48,11 @@ export default class HTTPManager {
    * @returns
    */
   async fetchAllRecipes () {
-    // TODO
-    return [];
+    try {
+      return await HTTPInterface.GET(`${this.recipesBaseURL}`);
+    } catch (error) {
+      console.log("error in fetchAllRecipes: " + error);
+    }
   }
 
   /**

@@ -34,29 +34,6 @@ app.use("/api/contacts", contactsRoutes.router);
  * afin de les remplacer par le GET (/*) général défini plus bas
  *
  */
-/*app.get("/", (request, response) => {
-  response.sendFile(PUBLIC_PATH + "pages/index.html");
-});
-
-app.get("/recipes", (request, response) => {
-  response.sendFile(PUBLIC_PATH + "pages/recipes.html");
-});
-
-app.get("/recipe", (request, response) => {
-  response.sendFile(PUBLIC_PATH + "pages/recipe.html");
-});
-
-app.get("/add_recipe", (request, response) => {
-  response.sendFile(PUBLIC_PATH + "pages/add_recipe.html");
-});
-
-app.get("/contact", (request, response) => {
-  response.sendFile(PUBLIC_PATH + "pages/contact.html");
-});
-
-app.get("/admin", (request, response) => {
-  response.sendFile(PUBLIC_PATH + "pages/admin.html");
-});*/
 
 /**
  * Middleware qui est exécuté à chaque requête pour retourner le fichier HTML correspondant

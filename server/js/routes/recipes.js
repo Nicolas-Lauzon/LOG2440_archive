@@ -14,7 +14,11 @@ const jsonManager = new RecipeJsonManager();
  */
 router.get("/", async (request, response) => {
   // TODO
-  response.status(501).end();
+  try {
+    const test = await jsonManager.getAllRecipes();
+    response.status(HTTP_STATUS.SUCCESS);
+    response.json(test);
+  } catch (error) { response.status(HTTP_STATUS.NO_CONTENT).end(); }
 });
 
 /**
@@ -39,6 +43,7 @@ router.post("/", async (request, response) => {
  */
 router.get("/:id", async (request, response) => {
   // TODO
+  
   response.status(501).end();
 });
 
