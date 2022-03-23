@@ -80,8 +80,11 @@ router.get("/category/:category", async (request, response) => {
  * @returns les recettes ayant ces ingrédiants
  */
 router.get("/ingredient/:ingredient", async (request, response) => {
-  // TODO
-  response.status(501).end();
+  try {
+    const byIngredient = await jsonManager.getRecipesByIngredient(request.params.ingredient, request.query.matchExact);
+    response.status(HTTP_STATUS.SUCCESS);
+    response.json(byIngredient);
+  } catch (error) { response.status(501).end(); }
 });
 
 /**

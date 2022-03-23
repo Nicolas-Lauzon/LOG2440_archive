@@ -130,7 +130,11 @@ export default class HTTPManager {
    */
   async getRecipesByIngredients (ingredient, matchExact) {
     // TODO
-    return [];
+    if (matchExact) {
+      return await HTTPInterface.GET(`${this.recipesBaseURL}/ingredient/${ingredient}?matchExact=true`);
+    } else { return await HTTPInterface.GET(`${this.recipesBaseURL}/ingredient/${ingredient}`);}
+
+    return await HTTPInterface.GET(`${this.recipesBaseURL}/category/${category}`);
   }
 
   /**
