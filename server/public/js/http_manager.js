@@ -93,7 +93,7 @@ export default class HTTPManager {
         const returnedRecipe = HTTPInterface.GET(`${this.recipesBaseURL}/${id}`);
         resolve(returnedRecipe);
       } catch (error) {
-        //window.location.replace("/server/public/pages/error.html");
+        // window.location.replace("/server/public/pages/error.html");
         reject("error in recipeByID:");
       }
     });
@@ -113,18 +113,8 @@ export default class HTTPManager {
     if (!category) {
       return await this.getAllRecipes();
     }
-    
-    const recipePromise = new Promise((resolve, reject) => {
-      try {
-        const returnedRecipe = HTTPInterface.GET(`${this.recipesBaseURL}/category/${category}`);
-        resolve(returnedRecipe);
-      } catch (error) {
-        reject("error in getRecipesByCategory");
-      }
-    });
 
-    const recipeReceived = Promise.resolve(recipePromise);
-    return recipeReceived;
+    return await HTTPInterface.GET(`${this.recipesBaseURL}/category/${category}`);
   }
 
   /**

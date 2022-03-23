@@ -35,7 +35,6 @@ class RecipeJsonManager {
    */
   async getRecipesByCategory (category) {
     const recipes = await this.getAllRecipes();
-    //console.log(category);
     return recipes.filter((recipe) => recipe.category === category);
   }
 
