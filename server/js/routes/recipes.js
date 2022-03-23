@@ -15,9 +15,9 @@ const jsonManager = new RecipeJsonManager();
 router.get("/", async (request, response) => {
   // TODO
   try {
-    const test = await jsonManager.getAllRecipes();
+    const allRecipes = await jsonManager.getAllRecipes();
     response.status(HTTP_STATUS.SUCCESS);
-    response.json(test);
+    response.json(allRecipes);
   } catch (error) { response.status(HTTP_STATUS.NO_CONTENT).end(); }
 });
 
@@ -42,9 +42,15 @@ router.post("/", async (request, response) => {
  * @returns la recette si le id existe. Sinon, une erreur 404 pour indiquer que la recette n'existe pas
  */
 router.get("/:id", async (request, response) => {
-  // TODO
-  
-  response.status(501).end();
+  try {
+    const recipe = await jsonManager.getRecipeByID(request.params.id);
+    if (!recipe) {
+      response.status(HTTP_STATUS.NOT_FOUND).end();
+    }
+
+    response.status(HTTP_STATUS.SUCCESS);
+    response.json(recipe);
+  } catch (error) { response.status(HTTP_STATUS.NO_CONTENT).end(); }
 });
 
 /**

@@ -88,8 +88,18 @@ export default class HTTPManager {
    * @returns la recette correspondante ou une rédirection vers la page error.html si recettes n'existe pas ou en cas d'erreurs
    */
   async getRecipeByID (id) {
-    // TODO
-    return {};
+    const recipePromise = new Promise((resolve, reject) => {
+      try {
+        const returnedRecipe = HTTPInterface.GET(`${this.recipesBaseURL}/${id}`);
+        resolve(returnedRecipe);
+      } catch (error) {
+        //window.location.replace("/server/public/pages/error.html");
+        reject("error in recipeByID:");
+      }
+    });
+
+    const recipeReceived = Promise.resolve(recipePromise);
+    return recipeReceived;
   }
 
   /**

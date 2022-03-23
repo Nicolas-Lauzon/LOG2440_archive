@@ -24,8 +24,8 @@ class RecipeJsonManager {
    * @returns la recette correspondante si elle existe
    */
   async getRecipeByID (id) {
-    // TODO
-    return {};
+    const recipes = await this.getAllRecipes();
+    return recipes.find((recipe) => String(recipe.id) === id);
   }
 
   /**
