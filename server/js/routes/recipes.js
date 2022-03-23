@@ -66,8 +66,11 @@ router.delete("/:id", async (request, response) => {
  * @returns les recettes appartenant à une catégorie
  */
 router.get("/category/:category", async (request, response) => {
-  // TODO
-  response.status(501).end();
+  try {
+    const recipes = await jsonManager.getRecipesByCategory(request.params.category);
+    response.status(HTTP_STATUS.SUCCESS);
+    response.json(recipes);
+  } catch (error) { response.status(HTTP_STATUS.NO_CONTENT).end(); }
 });
 
 /**
