@@ -88,18 +88,13 @@ export default class HTTPManager {
    * @returns la recette correspondante ou une rédirection vers la page error.html si recettes n'existe pas ou en cas d'erreurs
    */
   async getRecipeByID (id) {
-    const recipePromise = new Promise((resolve, reject) => {
-      try {
-        const returnedRecipe = HTTPInterface.GET(`${this.recipesBaseURL}/${id}`);
-        resolve(returnedRecipe);
-      } catch (error) {
-        // window.location.replace("/server/public/pages/error.html");
-        reject("error in recipeByID:");
-      }
-    });
-
-    const recipeReceived = Promise.resolve(recipePromise);
-    return recipeReceived;
+    const returnedRecipe = await HTTPInterface.GET(`${this.recipesBaseURL}/${id}`);
+    if (returnedRecipe === "404") {
+      window.location.replace("http://localhost:5000/pages/error.html");
+      window.alert("Error 404: Page not found");
+      return;
+    }
+    return returnedRecipe;
   }
 
   /**
@@ -113,7 +108,6 @@ export default class HTTPManager {
     if (!category) {
       return await this.getAllRecipes();
     }
-
     return await HTTPInterface.GET(`${this.recipesBaseURL}/category/${category}`);
   }
 
@@ -129,12 +123,9 @@ export default class HTTPManager {
    * @returns les recettes de la catégorie de recheche
    */
   async getRecipesByIngredients (ingredient, matchExact) {
-    // TODO
     if (matchExact) {
       return await HTTPInterface.GET(`${this.recipesBaseURL}/ingredient/${ingredient}?matchExact=true`);
-    } else { return await HTTPInterface.GET(`${this.recipesBaseURL}/ingredient/${ingredient}`);}
-
-    return await HTTPInterface.GET(`${this.recipesBaseURL}/category/${category}`);
+    } else { return await HTTPInterface.GET(`${this.recipesBaseURL}/ingredient/${ingredient}`); }
   }
 
   /**
@@ -150,7 +141,9 @@ export default class HTTPManager {
    * @param {*} id: recette à supprimer
    */
   async deleteRecipe (id) {
-    // TODO
+    try {
+      await HTTPInterface.DELETE(`${this.recipesBaseURL}/${id}`);
+    } catch (error) { console.log("Error in delete : " + error); }
   }
 
   /**

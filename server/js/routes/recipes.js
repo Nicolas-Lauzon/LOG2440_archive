@@ -45,7 +45,9 @@ router.get("/:id", async (request, response) => {
   try {
     const recipe = await jsonManager.getRecipeByID(request.params.id);
     if (!recipe) {
-      response.status(HTTP_STATUS.NOT_FOUND).end();
+      response.status(HTTP_STATUS.NOT_FOUND);
+      response.json("404");
+      return;
     }
 
     response.status(HTTP_STATUS.SUCCESS);
@@ -57,8 +59,11 @@ router.get("/:id", async (request, response) => {
  * @todo supprimer une recette spécifique selon un id
  */
 router.delete("/:id", async (request, response) => {
-  // TODO
-  response.status(501).end();
+  try {
+    const success = await jsonManager.deleteRecipeByID(request.params.id);
+    response.status(HTTP_STATUS.SUCCESS);
+    response.json(success);
+  } catch (error) { response.status(501).end(); }
 });
 
 /**

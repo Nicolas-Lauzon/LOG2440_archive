@@ -65,8 +65,11 @@ class RecipeJsonManager {
    * @returns true si la suppression a réussi, false sinon
    */
   async deleteRecipeByID (id) {
-    // TODO
-    return false;
+    const recipes = await this.getAllRecipes();
+    let finalList = recipes.filter((recipe) => String(recipe.id) !== id);
+    finalList = { "recipes": finalList };
+    const ret = await fileSystemManager.writeToJsonFile(this.JSON_PATH, JSON.stringify(finalList));
+    return true;
   }
 
   /**
