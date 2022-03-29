@@ -1,3 +1,4 @@
+const { json } = require("express");
 const path = require("path");
 const { FileSystemManager } = require("./file_system_manager");
 
@@ -57,6 +58,8 @@ class RecipeJsonManager {
    */
   async addNewRecipe (newRecipe) {
     // TODO
+    recipe = newRecipe;
+    const ret = await fileSystemManager.writeToJsonFile(this.JSON_PATH, JSON.stringify(recipe));
   }
 
   /**

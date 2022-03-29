@@ -133,7 +133,7 @@ export default class HTTPManager {
    * @param {*} newRecipe
    */
   async addNewRecipe (newRecipe) {
-    // TODO
+    await HTTPInterface.POST(``, newRecipe);
   }
 
   /**

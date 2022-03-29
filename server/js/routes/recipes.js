@@ -31,9 +31,11 @@ router.post("/", async (request, response) => {
       return;
     }
     // TODO
+    await jsonManager.addNewRecipe(request.body);
     response.status(501).end();
   } catch (error) {
     // TODO
+    response.status(HTTP_STATUS.NO_CONTENT).end();
   }
 });
 
