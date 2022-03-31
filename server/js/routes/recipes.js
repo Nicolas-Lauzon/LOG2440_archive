@@ -30,7 +30,7 @@ router.post("/", async (request, response) => {
       return;
     }
     await jsonManager.addNewRecipe(request.body);
-    response.status(201);
+    response.status(201).send();
   } catch (error) {
     response.status(500).end();
   }
