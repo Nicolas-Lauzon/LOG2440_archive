@@ -18,6 +18,14 @@ describe("Contact API tests", () => {
     expect(response.body).toEqual(contacts);
     expect(response.status).toBe(200);
   });
+  
+  it("GET request to api/contacts/ should greturn 500 on error", async () => {
+    jest.spyOn(jsonManager, "getAllContacts").mockImplementation(() => {
+      throw new Error("");
+    });
+    const response = await request.get(`${API_URL}/`);
+    expect(response.status).toBe(500);
+  });
 
   it("POST request to api/contacts/ should create a new Contact and redirect with 302", async () => {
     const contact = { id: 999, name: "Jean Tremblay", email: "jean.tremblay@polymtl.ca", message: "Allo!" };

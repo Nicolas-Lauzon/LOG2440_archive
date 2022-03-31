@@ -13,7 +13,7 @@ router.get("/", async (request, response) => {
     response.status(HTTP_STATUS.SUCCESS);
     response.json(allContacts);
   } catch (error) {
-    response.status(HTTP_STATUS.NO_CONTENT).end();
+    response.status(500).end();
   }
 });
 

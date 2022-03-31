@@ -12,6 +12,7 @@ describe("Recipes API tests", () => {
     jest.clearAllMocks();
     app.close();
   });
+
   it("GET request to api/recipes/ should get all Recipes and return 200", async () => {
     const response = await request.get(`${API_URL}/`);
     expect(response.body).toEqual(recipes);
@@ -23,6 +24,12 @@ describe("Recipes API tests", () => {
     const response = await request.get(`${API_URL}/2`);
     expect(response.body).toEqual(recipe);
     expect(response.status).toBe(200);
+  });
+
+  it("GET request to api/recipes/ with bad ID should return 404", async () => {
+    const response = await request.get(`${API_URL}/99`);
+    expect(response.body).toEqual({});
+    expect(response.status).toBe(404);
   });
 
   it("POST request to api/recipes/ should create a new Recipe and return 201", async () => {
@@ -76,6 +83,13 @@ describe("Recipes API tests", () => {
     expect(response.status).toBe(200);
   });
 
+  it("GET request to api/recipes/category with bad ID should return 404", async () => {
+    const category = "fake";
+    const response = await request.get(`${API_URL}/category/${category}`);
+    expect(response.body).toEqual({});
+    expect(response.status).toBe(404);
+  });
+
   it("GET request to api/recipes/ingredient should get correct recipes", async () => {
     const ingredient = "oignon";
     const recipe = recipes
@@ -83,6 +97,15 @@ describe("Recipes API tests", () => {
     const response = await request.get(`${API_URL}/ingredient/${ingredient}`);
     expect(response.body).toEqual(recipe);
     expect(response.status).toBe(200);
+  });
+
+  it("GET request to api/recipes/ingredient should return 500 on error", async () => {
+    jest.spyOn(jsonManager, "getRecipesByIngredient").mockImplementation(() => {
+      throw new Error("");
+    });
+    const ingredient = "fake";
+    const response = await request.get(`${API_URL}/ingredient/${ingredient}`);
+    expect(response.status).toBe(500);
   });
 
   it("PATCH request to api/recipes/admin/reset should reset all recipies", async () => {
@@ -96,6 +119,14 @@ describe("Recipes API tests", () => {
       throw new Error("");
     });
     const response = await request.patch(`${API_URL}/admin/reset`);
+    expect(response.status).toBe(500);
+  });
+
+  it("GET request to api/recipes/ should return 500 on error", async () => {
+    jest.spyOn(jsonManager, "getAllRecipes").mockImplementation(() => {
+      throw new Error("");
+    });
+    const response = await request.get(`${API_URL}/`);
     expect(response.status).toBe(500);
   });
 });

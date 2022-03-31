@@ -17,7 +17,7 @@ router.get("/", async (request, response) => {
     const allRecipes = await jsonManager.getAllRecipes();
     response.status(HTTP_STATUS.SUCCESS);
     response.json(allRecipes);
-  } catch (error) { response.status(HTTP_STATUS.NO_CONTENT).end(); }
+  } catch (error) { response.status(500).end(); }
 });
 
 /**
@@ -74,6 +74,9 @@ router.delete("/:id", async (request, response) => {
 router.get("/category/:category", async (request, response) => {
   try {
     const recipes = await jsonManager.getRecipesByCategory(request.params.category);
+    if (recipes.length === 0) {
+      response.status(404).end();
+    }
     response.status(HTTP_STATUS.SUCCESS);
     response.json(recipes);
   } catch (error) { response.status(HTTP_STATUS.NO_CONTENT).end(); }
@@ -90,7 +93,7 @@ router.get("/ingredient/:ingredient", async (request, response) => {
     const byIngredient = await jsonManager.getRecipesByIngredient(request.params.ingredient, request.query.matchExact);
     response.status(HTTP_STATUS.SUCCESS);
     response.json(byIngredient);
-  } catch (error) { response.status(501).end(); }
+  } catch (error) { response.status(500).end(); }
 });
 
 /**
