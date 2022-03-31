@@ -27,8 +27,7 @@ router.post("/", async (request, response) => {
       return;
     }
     await jsonManager.addNewContact(request.body);
-    response.status(HTTP_STATUS.SUCCESS);
-
+    response.redirect('http://localhost:5000/contact');
   } catch (error) {
     response.status(HTTP_STATUS.NO_CONTENT).end();
   }
