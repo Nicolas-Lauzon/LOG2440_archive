@@ -138,7 +138,7 @@ export default class HTTPManager {
   async addNewRecipe (newRecipe) {
     try {
       await HTTPInterface.POST(`${this.recipesBaseURL}`, newRecipe);
-    } catch (error) { console.log("Error in post :", error);}
+    } catch (error) { console.log("Error in post :", error); }
   }
 
   /**
@@ -151,13 +151,12 @@ export default class HTTPManager {
     } catch (error) { console.log("Error in delete : " + error); }
   }
 
-
   /**
    * @todo Supprimer un contact identifié par son id
    * @param {*} id: contact à supprimer
    */
   async deleteContact (id) {
-    try{
+    try {
       await HTTPInterface.DELETE(`${this.contactsBaseURL}/${id}`);
     } catch (error) { console.log("Error in delete : " + error); }
   }

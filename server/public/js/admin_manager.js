@@ -52,9 +52,8 @@ export default class AdminManager {
    * @param {*} id id de la recette à supprimer
    */
   async deleteRecipe (id) {
-    const deleteValue = await this.httpManager.deleteRecipe(id);
+    await this.httpManager.deleteRecipe(id);
     this.removeElementFromDOM(".section-recipes-item", id);
-    console.log(deleteValue);
   }
 
   /**
@@ -64,7 +63,7 @@ export default class AdminManager {
    */
   async deleteContact (id) {
     // TODO
-    const deleteValue = await this.httpManager.deleteContact(id);
+    await this.httpManager.deleteContact(id);
     this.removeElementFromDOM(".section-contacts-item", id);
   }
 

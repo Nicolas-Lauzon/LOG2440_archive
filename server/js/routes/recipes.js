@@ -17,7 +17,7 @@ router.get("/", async (request, response) => {
     const allRecipes = await jsonManager.getAllRecipes();
     response.status(HTTP_STATUS.SUCCESS);
     response.json(allRecipes);
-  } catch (error) { response.status(500).end(); }
+  } catch (error) { response.status(HTTP_STATUS.SERVER_ERROR).end(); }
 });
 
 /**
@@ -30,9 +30,9 @@ router.post("/", async (request, response) => {
       return;
     }
     await jsonManager.addNewRecipe(request.body);
-    response.status(201).send();
+    response.status(HTTP_STATUS.CREATED).send();
   } catch (error) {
-    response.status(500).end();
+    response.status(HTTP_STATUS.SERVER_ERROR).end();
   }
 });
 
@@ -59,12 +59,12 @@ router.get("/:id", async (request, response) => {
 router.delete("/:id", async (request, response) => {
   try {
     const success = await jsonManager.deleteRecipeByID(request.params.id);
-    if(!success) {
-      response.status(404).end();
+    if (!success) {
+      response.status(HTTP_STATUS.NOT_FOUND).end();
     }
-    response.status(204);
+    response.status(HTTP_STATUS.SUCCESS);
     response.json(success);
-  } catch (error) { response.status(500).end(); }
+  } catch (error) { response.status(HTTP_STATUS.SERVER_ERROR).end(); }
 });
 
 /**
@@ -75,7 +75,7 @@ router.get("/category/:category", async (request, response) => {
   try {
     const recipes = await jsonManager.getRecipesByCategory(request.params.category);
     if (recipes.length === 0) {
-      response.status(404).end();
+      response.status(HTTP_STATUS.NOT_FOUND).end();
     }
     response.status(HTTP_STATUS.SUCCESS);
     response.json(recipes);
@@ -93,7 +93,7 @@ router.get("/ingredient/:ingredient", async (request, response) => {
     const byIngredient = await jsonManager.getRecipesByIngredient(request.params.ingredient, request.query.matchExact);
     response.status(HTTP_STATUS.SUCCESS);
     response.json(byIngredient);
-  } catch (error) { response.status(500).end(); }
+  } catch (error) { response.status(HTTP_STATUS.SERVER_ERROR).end(); }
 });
 
 /**

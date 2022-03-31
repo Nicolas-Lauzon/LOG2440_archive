@@ -58,7 +58,7 @@ describe("Recipes API tests", () => {
   it("DELETE request to api/recipes/ should delete an existing recipe and return 204 with a valid ID", async () => {
     jest.spyOn(jsonManager, "deleteRecipeByID").mockImplementation(async () => true);
     const response = await request.delete(`${API_URL}/2`);
-    expect(response.status).toBe(204);
+    expect(response.status).toBe(200);
   });
 
   it("DELETE request to api/recipes/ should return 404 with an invalid ID", async () => {

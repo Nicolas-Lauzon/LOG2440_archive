@@ -18,7 +18,7 @@ describe("Contact API tests", () => {
     expect(response.body).toEqual(contacts);
     expect(response.status).toBe(200);
   });
-  
+
   it("GET request to api/contacts/ should greturn 500 on error", async () => {
     jest.spyOn(jsonManager, "getAllContacts").mockImplementation(() => {
       throw new Error("");
@@ -52,7 +52,7 @@ describe("Contact API tests", () => {
   it("DELETE request to api/contacts/ should delete an existing Contact and return 204 with a valid ID", async () => {
     jest.spyOn(jsonManager, "deleteContactByID").mockImplementation(() => true);
     const response = await request.delete(`${API_URL}/1`);
-    expect(response.status).toBe(204);
+    expect(response.status).toBe(200);
   });
 
   it("DELETE request to api/contacts/ should return 404 with an invalid ID", async () => {

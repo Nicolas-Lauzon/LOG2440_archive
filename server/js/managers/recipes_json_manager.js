@@ -1,4 +1,3 @@
-const { json } = require("express");
 const path = require("path");
 const { FileSystemManager } = require("./file_system_manager");
 
@@ -57,8 +56,8 @@ class RecipeJsonManager {
    * @param {*} newRecipe : la nouvelle recette à ajouter
    */
   async addNewRecipe (newRecipe) {
-    let allRecipes = await this.getAllRecipes();
-    let recipe = {};
+    const allRecipes = await this.getAllRecipes();
+    const recipe = {};
     recipe.id = allRecipes.length + 1;
     recipe.name = newRecipe.name;
     recipe.src = newRecipe.src;
@@ -69,8 +68,8 @@ class RecipeJsonManager {
     recipe.tools = newRecipe.tools;
     recipe.steps = newRecipe.steps;
     allRecipes.push(recipe);
-    let finalList = { "recipes": allRecipes };
-    const ret = await fileSystemManager.writeToJsonFile(this.JSON_PATH, JSON.stringify(finalList));
+    const finalList = { "recipes": allRecipes };
+    await fileSystemManager.writeToJsonFile(this.JSON_PATH, JSON.stringify(finalList));
   }
 
   /**
@@ -81,11 +80,11 @@ class RecipeJsonManager {
   async deleteRecipeByID (id) {
     const recipes = await this.getAllRecipes();
     let finalList = recipes.filter((recipe) => String(recipe.id) !== id);
-    if (finalList.length == recipes.length) {
+    if (finalList.length === recipes.length) {
       return false;
     }
     finalList = { "recipes": finalList };
-    const ret = await fileSystemManager.writeToJsonFile(this.JSON_PATH, JSON.stringify(finalList));
+    await fileSystemManager.writeToJsonFile(this.JSON_PATH, JSON.stringify(finalList));
     return true;
   }
 
