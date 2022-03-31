@@ -42,9 +42,12 @@ class ContactJsonManager {
    * @returns true si la suppression a réussi, false sinon
    */
   async deleteContactByID (id) {
-    // TODO
+
     const contacts = await this.getAllContacts();
     let finalList = contacts.filter((contact) => String(contact.id) !== id);
+    if( finalList.length == contacts.length) {
+      return false;
+    }
     finalList = { "contacts": finalList };
     const ret = await fileSystemManager.writeToJsonFile(this.JSON_PATH, JSON.stringify(finalList));
     return true;

@@ -81,6 +81,9 @@ class RecipeJsonManager {
   async deleteRecipeByID (id) {
     const recipes = await this.getAllRecipes();
     let finalList = recipes.filter((recipe) => String(recipe.id) !== id);
+    if (finalList.length == recipes.length) {
+      return false;
+    }
     finalList = { "recipes": finalList };
     const ret = await fileSystemManager.writeToJsonFile(this.JSON_PATH, JSON.stringify(finalList));
     return true;

@@ -8,7 +8,7 @@ async function restoreContacts () {
   await fs.promises.writeFile(filePath, JSON.stringify({ contacts }));
 }
 
-describe("Recipe JSON Manager tests", () => {
+describe("Contact JSON Manager tests", () => {
   let contactJSONManger;
   const TEST_JSON_PATH = path.join(__dirname + "/contacts_test.json");
 

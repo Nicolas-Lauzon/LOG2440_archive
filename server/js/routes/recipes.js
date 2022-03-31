@@ -30,9 +30,9 @@ router.post("/", async (request, response) => {
       return;
     }
     await jsonManager.addNewRecipe(request.body);
-    response.status(HTTP_STATUS.SUCCESS);
+    response.status(201);
   } catch (error) {
-    response.status(HTTP_STATUS.NO_CONTENT).end();
+    response.status(500).end();
   }
 });
 
@@ -44,9 +44,8 @@ router.get("/:id", async (request, response) => {
   try {
     const recipe = await jsonManager.getRecipeByID(request.params.id);
     if (!recipe) {
-      response.status(HTTP_STATUS.NOT_FOUND);
-      response.json("404");
-      return;
+      response.status(HTTP_STATUS.NOT_FOUND).end();
+      // response.json("404");
     }
 
     response.status(HTTP_STATUS.SUCCESS);
@@ -60,9 +59,12 @@ router.get("/:id", async (request, response) => {
 router.delete("/:id", async (request, response) => {
   try {
     const success = await jsonManager.deleteRecipeByID(request.params.id);
-    response.status(HTTP_STATUS.SUCCESS);
+    if(!success) {
+      response.status(404).end();
+    }
+    response.status(204);
     response.json(success);
-  } catch (error) { response.status(501).end(); }
+  } catch (error) { response.status(500).end(); }
 });
 
 /**

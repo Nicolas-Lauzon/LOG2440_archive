@@ -27,9 +27,9 @@ router.post("/", async (request, response) => {
       return;
     }
     await jsonManager.addNewContact(request.body);
-    response.redirect('http://localhost:5000/contact');
+    response.status(302).redirect('http://localhost:5000/contact');
   } catch (error) {
-    response.status(HTTP_STATUS.NO_CONTENT).end();
+    response.status(500).end();
   }
 });
 
@@ -39,10 +39,13 @@ router.post("/", async (request, response) => {
 router.delete("/:id", async (request, response) => {
   try {
     const success = await jsonManager.deleteContactByID(request.params.id);
-    response.status(HTTP_STATUS.SUCCESS);
+    if(!success){
+      response.status(404).end();
+    }
+    response.status(204);
     response.json(success);
   } catch (error) {
-    response.status(501).end();
+    response.status(500).end();
   }
 });
 
