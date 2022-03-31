@@ -27,7 +27,7 @@ describe("Contact JSON Manager tests", () => {
   });
 
   it("addNewContact should add a new Contacts to the JSON", async () => {
-    const contact = { name: "Jean Tremblay", email: "jean.tremblay@polymtl.ca", message: "Allo!" };
+    const contact = { id: 2, name: "Jean Tremblay", email: "jean.tremblay@polymtl.ca", message: "Allo!" };
     const originalSize = contacts.length;
     await contactJSONManger.addNewContact(contact);
     const newContacts = JSON.parse(await fs.promises.readFile(TEST_JSON_PATH)).contacts;
