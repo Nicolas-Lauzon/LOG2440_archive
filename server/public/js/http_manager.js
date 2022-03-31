@@ -63,7 +63,7 @@ export default class HTTPManager {
     try {
       return await HTTPInterface.GET(`${this.contactsBaseURL}`);
     } catch (error) {
-      console.log("error in fetchAllRecipes: " + error);
+      console.log("error in fetchAllContacts: " + error);
     }
   }
 
@@ -136,7 +136,9 @@ export default class HTTPManager {
    * @param {*} newRecipe
    */
   async addNewRecipe (newRecipe) {
-    await HTTPInterface.POST(`${this.recipesBaseURL}`, newRecipe);
+    try {
+      await HTTPInterface.POST(`${this.recipesBaseURL}`, newRecipe);
+    } catch (error) { console.log("Error in post :", error);}
   }
 
   /**
@@ -148,6 +150,7 @@ export default class HTTPManager {
       await HTTPInterface.DELETE(`${this.recipesBaseURL}/${id}`);
     } catch (error) { console.log("Error in delete : " + error); }
   }
+
 
   /**
    * @todo Supprimer un contact identifié par son id

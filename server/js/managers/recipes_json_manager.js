@@ -57,9 +57,20 @@ class RecipeJsonManager {
    * @param {*} newRecipe : la nouvelle recette à ajouter
    */
   async addNewRecipe (newRecipe) {
-    // TODO
-    recipe = newRecipe;
-    const ret = await fileSystemManager.writeToJsonFile(this.JSON_PATH, JSON.stringify(recipe));
+    let allRecipes = await this.getAllRecipes();
+    let recipe = {};
+    recipe.id = allRecipes.length + 1;
+    recipe.name = newRecipe.name;
+    recipe.src = newRecipe.src;
+    recipe.time = newRecipe.time;
+    recipe.category = newRecipe.category;
+    recipe.img = newRecipe.img;
+    recipe.ingredients = newRecipe.ingredients;
+    recipe.tools = newRecipe.tools;
+    recipe.steps = newRecipe.steps;
+    allRecipes.push(recipe);
+    let finalList = { "recipes": allRecipes };
+    const ret = await fileSystemManager.writeToJsonFile(this.JSON_PATH, JSON.stringify(finalList));
   }
 
   /**

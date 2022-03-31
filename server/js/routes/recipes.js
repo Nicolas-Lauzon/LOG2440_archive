@@ -13,7 +13,6 @@ const jsonManager = new RecipeJsonManager();
  * @returns toutes les recettes sauvegardées
  */
 router.get("/", async (request, response) => {
-  // TODO
   try {
     const allRecipes = await jsonManager.getAllRecipes();
     response.status(HTTP_STATUS.SUCCESS);
@@ -30,11 +29,9 @@ router.post("/", async (request, response) => {
       response.status(HTTP_STATUS.BAD_REQUEST).send();
       return;
     }
-    // TODO
     await jsonManager.addNewRecipe(request.body);
-    response.status(501).end();
+    response.status(HTTP_STATUS.SUCCESS);
   } catch (error) {
-    // TODO
     response.status(HTTP_STATUS.NO_CONTENT).end();
   }
 });

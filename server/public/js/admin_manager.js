@@ -64,6 +64,8 @@ export default class AdminManager {
    */
   async deleteContact (id) {
     // TODO
+    const deleteValue = await this.httpManager.deleteContact(id);
+    this.removeElementFromDOM(".section-contacts-item", id);
   }
 
   /**

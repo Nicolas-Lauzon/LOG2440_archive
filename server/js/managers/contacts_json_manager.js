@@ -24,7 +24,15 @@ class ContactJsonManager {
    * @param {*} newContact : le nouveau contact à ajouter
    */
   async addNewContact (newContact) {
-    // TODO
+    let allContacts = await this.getAllContacts();
+    let contact = {};
+    contact.id = allContacts.length + 1;
+    contact.name = newContact.name;
+    contact.email = newContact.email;
+    contact.message = newContact.message;
+    allContacts.push(contact);
+    let finalList = {"contacts" : allContacts}
+    const ret = await fileSystemManager.writeToJsonFile(this.JSON_PATH, JSON.stringify(finalList));
   }
 
   /**
@@ -35,7 +43,11 @@ class ContactJsonManager {
    */
   async deleteContactByID (id) {
     // TODO
-    return false;
+    const contacts = await this.getAllContacts();
+    let finalList = contacts.filter((contact) => String(contact.id) !== id);
+    finalList = { "contacts": finalList };
+    const ret = await fileSystemManager.writeToJsonFile(this.JSON_PATH, JSON.stringify(finalList));
+    return true;
   }
 }
 

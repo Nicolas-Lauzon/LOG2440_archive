@@ -7,9 +7,14 @@ const jsonManager = new ContactJsonManager();
 /**
  * @todo Renvoyer le contenu json de tous les contacts
  */
-router.use("/", async (request, response) => {
-  // TODO
-  response.status(501).end();
+router.get("/", async (request, response) => {
+  try {
+    const allContacts = await jsonManager.getAllContacts();
+    response.status(HTTP_STATUS.SUCCESS);
+    response.json(allContacts);
+  } catch (error) {
+    response.status(HTTP_STATUS.NO_CONTENT).end();
+  }
 });
 
 /**
@@ -21,10 +26,11 @@ router.post("/", async (request, response) => {
       response.status(HTTP_STATUS.BAD_REQUEST).send();
       return;
     }
-    // TODO
-    response.status(501).end();
+    await jsonManager.addNewContact(request.body);
+    response.status(HTTP_STATUS.SUCCESS);
+
   } catch (error) {
-    // TODO
+    response.status(HTTP_STATUS.NO_CONTENT).end();
   }
 });
 
@@ -32,8 +38,13 @@ router.post("/", async (request, response) => {
  * @todo Supprimer un contact spécifique selon un id
  */
 router.delete("/:id", async (request, response) => {
-  // TODO
-  response.status(501).end();
+  try {
+    const success = await jsonManager.deleteContactByID(request.params.id);
+    response.status(HTTP_STATUS.SUCCESS);
+    response.json(success);
+  } catch (error) {
+    response.status(501).end();
+  }
 });
 
 module.exports = { router, jsonManager };
