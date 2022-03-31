@@ -27,14 +27,14 @@ describe("Recipe JSON Manager tests", () => {
   });
 
   it("getRecipeByID should return a specific Recipe with a valid ID", async () => {
-    const id = 1;
+    const id = "1";
     const recipe = await recipeJSONManager.getRecipeByID(id);
     const expectedRecipeName = "Bol protéiné à la mexicaine";
     expect(recipe.name).toEqual(expectedRecipeName);
   });
 
   it("getRecipeByID should return undefined with invalid ID", async () => {
-    const id = 99;
+    const id = "99";
     const recipe = await recipeJSONManager.getRecipeByID(id);
     expect(recipe).toEqual(undefined);
   });
@@ -73,7 +73,7 @@ describe("Recipe JSON Manager tests", () => {
   });
 
   it("deleteRecipeByID should delete an existing Recipe with valid ID", async () => {
-    const id = 1;
+    const id = "1";
     const originalSize = recipes.length;
     const result = await recipeJSONManager.deleteRecipeByID(id);
     const newSize = JSON.parse(await fs.promises.readFile(TEST_JSON_PATH)).recipes.length;
@@ -82,7 +82,7 @@ describe("Recipe JSON Manager tests", () => {
   });
 
   it("deleteRecipeByID should not delete an existing Recipe with an invalid ID", async () => {
-    const id = 99;
+    const id = "99";
     const originalSize = recipes.length;
     const result = await recipeJSONManager.deleteRecipeByID(id);
     const newSize = JSON.parse(await fs.promises.readFile(TEST_JSON_PATH)).recipes.length;

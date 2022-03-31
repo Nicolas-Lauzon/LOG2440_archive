@@ -36,8 +36,9 @@ describe("Contact JSON Manager tests", () => {
   });
 
   it("deleteContactByID should delete an existing Contact with valid ID", async () => {
-    const id = 1;
+    const id = "1";
     const originalSize = contacts.length;
+    console.log("original Size : ", originalSize);
     const result = await contactJSONManger.deleteContactByID(id);
     const newSize = JSON.parse(await fs.promises.readFile(TEST_JSON_PATH)).contacts.length;
     expect(newSize).toEqual(originalSize - 1);
@@ -45,7 +46,7 @@ describe("Contact JSON Manager tests", () => {
   });
 
   it("deleteContactByID should not delete an existing Contact with an invalid ID", async () => {
-    const id = 99;
+    const id = "99";
     const originalSize = contacts.length;
     const result = await contactJSONManger.deleteContactByID(id);
     const newSize = JSON.parse(await fs.promises.readFile(TEST_JSON_PATH)).contacts.length;
