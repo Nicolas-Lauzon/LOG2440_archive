@@ -1,9 +1,9 @@
 const { MongoClient } = require('mongodb');
 
-const DB_USERNAME = 'Admin';
-const DB_PASSWORD = 'admin1234';
-const DB_URL = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@cluster0.ldkwk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-const DB_DB = 'TP5';
+const DB_USERNAME = 'NicolasLauzon';
+const DB_PASSWORD = 'HDouKsKX583GowWg';
+const DB_URL = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@cluster0.fnhfg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const DB_DB = 'TP5_DB';
 
 class DatabaseService {
   /**
