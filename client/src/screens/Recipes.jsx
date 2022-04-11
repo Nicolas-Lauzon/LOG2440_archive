@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import CategoryButtonGroup from '../components/CategoryButtonGroup';
 import NavBar from '../components/NavBar';
 import PageFooter from '../components/PageFooter';
+import RecipeCard from '../components/RecipeCard';
 import httpService from '../services/http.service';
+import IngredientSearchBar from '../components/IngredientSearchBar';
 
 export default function Recipes() {
   const [recipes, setRecipes] = useState([]);
@@ -34,14 +36,28 @@ export default function Recipes() {
    * Récupérer les recettes à partir du serveur
    * Si ingredientInput est vide, le système récupère toutes les recettes
    */
-  const searchByIngredient = async (e) => {
-    e.preventDefault();
+  const searchByIngredient = async () => {
+    if (ingredientInput === '') {
+      setIsLoading(true);
+      setRecipes(await httpService.fetchAllRecipes());
+      setIsLoading(false);
+    } else {
+      setIsLoading(true);
+      setRecipes(await httpService.getRecipesByIngredients(ingredientInput, exactMatch));
+      setIsLoading(false);
+    }
   };
 
   /**
    * TODO : Changer l'état de la variable exactMatch lors d'un changement du "toggle"
    */
-  const toggleExactMatch = () => {};
+  const toggleExactMatch = () => {
+    setExactMatch(!exactMatch);
+  };
+
+  const handleIngrdientInputChange = (e) => {
+    setIngredientInput(e);
+  };
 
   return (
     <>
@@ -54,7 +70,13 @@ export default function Recipes() {
         <section className='recipes-type' aria-label='Recherche'>
           <h2>Recherche par ingrédient</h2>
           {/* TODO : Ajouter le component IngredientSearchBar en configurant les bonnes propriétés */}
-          <div />
+          <IngredientSearchBar
+            handleSubmit={searchByIngredient}
+            handleMatchChange={toggleExactMatch}
+            exactMatch={exactMatch}
+            value={ingredientInput}
+            handleChange={handleIngrdientInputChange}
+          />
         </section>
         <article>
           <span className='right-header' id='recipes-count'>
@@ -62,13 +84,12 @@ export default function Recipes() {
           </span>
           <h1>Recettes</h1>
           <div className='recipes' id='recipes-list'>
-            {/* TODO : Ajouter le component RecipeCard pour chaque recette si isLoading est à false */}
             {isLoading ? (
               <div className='loader-container'>
                 <CircularProgress color='success' />
               </div>
             ) : (
-              recipes.map((recipe) => <div />)
+              recipes.map((recipe) => <RecipeCard recipe={recipe} />)
             )}
           </div>
         </article>

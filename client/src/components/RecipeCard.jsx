@@ -7,7 +7,7 @@ export default function RecipeCard({ recipe }) {
   return (
     <div className='recipe'>
       {/* TODO : Configurer le lien dynamique en fonction de l'attribut id de la recette et les paramètres de la recette */}
-      <NavLink className='recipe-link' to={`/recipe?id=${0 + 1}`}>
+      <NavLink className='recipe-link' to={`/recipe?id=${recipe.id}`}>
         <h2>{recipe.name}</h2>
         <img alt={recipe.name} src={recipe.img} />
         <p className='time'>

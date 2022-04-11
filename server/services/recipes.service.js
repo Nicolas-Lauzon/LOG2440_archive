@@ -20,7 +20,7 @@ class RecipesService {
    * @returns les recettes de la collection
    */
   async getAllRecipes () {
-    return [];
+    return await this.dbService.db.collection(RECIPES_COLLECTION).find({}).toArray();
   }
 
   /**
@@ -29,7 +29,7 @@ class RecipesService {
    * @returns la recette correspondante
    */
   async getRecipeById (id) {
-    return {};
+    return await this.dbService.db.collection(RECIPES_COLLECTION).findOne({ id: { $eq: parseInt(id) } });
   }
 
   /**
@@ -38,7 +38,7 @@ class RecipesService {
    * @returns les recettes correspondantes
    */
   async getRecipesByCategory (category) {
-    return [];
+    return await this.dbService.db.collection(RECIPES_COLLECTION).find({ category: { $eq: category } }).toArray();
   }
 
   /**
@@ -48,7 +48,14 @@ class RecipesService {
    * @returns les recettes trouvées ou un tableau vide
    */
   async getRecipesByIngredient (ingredient, matchExact) {
-    return [];
+    if (matchExact) {
+      const searchArg = { ingredients: { $elemMatch: { name: ingredient } } };
+      return await this.dbService.db.collection(RECIPES_COLLECTION).find(searchArg).toArray();
+    }
+    const searchArg = { ingredients: { $elemMatch: { name: { $regex: ingredient } } } };
+    const test = await this.dbService.db.collection(RECIPES_COLLECTION).find(searchArg).toArray();
+    console.log(test);
+    return test;
   }
 
   /**

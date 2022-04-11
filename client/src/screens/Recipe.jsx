@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import PageFooter from '../components/PageFooter';
+import StepCard from '../components/StepCard';
+import httpService from '../services/http.service';
+import CheckList from '../components/CheckList';
 
 export default function Recipe() {
   const [recipe, setRecipe] = useState({
@@ -16,9 +19,8 @@ export default function Recipe() {
   const urlParams = new URLSearchParams(useLocation().search);
   const recipeId = urlParams.get('id');
 
-  // TODO : Récupérer la recette du serveur pour modifier la variable recipe
-  // et mettre la variable isLoading à false par la suite
   React.useEffect(async () => {
+    setRecipe(await httpService.getRecipeByID(recipeId));
     setIsLoading(false);
   }, []);
 
@@ -43,21 +45,18 @@ export default function Recipe() {
               <div className='col'>
                 <section>
                   <h2>Liste d'ingrédients</h2>
-                  {/* TODO : Ajouter le component CheckList pour les ingrédients de la recette */}
-                  <div />
+                  <CheckList values={recipe.ingredients} />
                 </section>
                 <section>
                   <h2>Le nécessaire pour la cuisson</h2>
-                  {/* TODO : Ajouter le component CheckList pour les outils de la recette */}
-                  <div />
+                  <CheckList values={recipe.tools} />
                 </section>
               </div>
             </div>
             <h1>Les étapes à suivre pour une recette réussite!</h1>
             <div className='recipe-container'>
-              {/* TODO : Ajouter le component StepCard pour chaque étape de la recette */}
-              {recipe.etapes.map((step) => (
-                <div />
+              {recipe.steps.map((step) => (
+                <StepCard step={step} />
               ))}
             </div>
           </article>
