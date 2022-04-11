@@ -69,7 +69,6 @@ export default function Recipes() {
         </section>
         <section className='recipes-type' aria-label='Recherche'>
           <h2>Recherche par ingrédient</h2>
-          {/* TODO : Ajouter le component IngredientSearchBar en configurant les bonnes propriétés */}
           <IngredientSearchBar
             handleSubmit={searchByIngredient}
             handleMatchChange={toggleExactMatch}

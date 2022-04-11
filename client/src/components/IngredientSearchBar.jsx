@@ -3,7 +3,6 @@ import React from 'react';
 export default function IngredientSearchBar(props) {
   const { handleSubmit, handleChange, value, exactMatch, handleMatchChange } = props;
 
-  // TODO : gérer l'événement onSubmit du formulaire
   return (
     <form onSubmit={() => { handleSubmit(); }} action='#' id='search-form'>
       <div className='search-group'>
