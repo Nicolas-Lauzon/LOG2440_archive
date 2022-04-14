@@ -11,7 +11,7 @@ export default function AdminContact({ contact, handleDelete }) {
       </div>
       <p className='section-contact-message'>{contact.message}</p>
       {/* TODO : gérer l'événement onClick qui supprime un contact en fonction de son id */}
-      <button type='button' className='btn section-trash-icon' data-id={contact.id} onClick={() => {}}>
+      <button type='button' className='btn section-trash-icon' data-id={contact.id} onClick={() => {handleDelete(contact.id)}}>
         <FontAwesomeIcon icon={faTrash} />
       </button>
     </div>

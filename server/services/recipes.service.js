@@ -64,14 +64,18 @@ class RecipesService {
    * @returns le résultat de la modification
    */
   async deleteRecipeById (id) {
-    return undefined;
+    await this.dbService.db.collection(RECIPES_COLLECTION).deleteOne({id: { $eq: parseInt(id) }});
+    //reset all the other ids (todo)
+    return await this.dbService.db.collection(RECIPES_COLLECTION).find({}).toArray();
   }
 
   /**
    * TODO : Ajouter une recette à la liste des recettes
    * @param {*} recipe : la nouvelle recette à ajouter
    */
-  async addNewRecipe (recipe) {}
+  async addNewRecipe (recipe) {
+    await this.dbService.db.collection(RECIPES_COLLECTION).insertOne(recipe);
+  }
 
   /**
    * Réinitialiser les recettes en supprimant la collection puis en la repeuplant

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import AdminContact from '../components/AdminContact';
+import AdminRecipe from '../components/AdminRecipe';
 import NavBar from '../components/NavBar';
 import PageFooter from '../components/PageFooter';
+import StepCard from '../components/StepCard';
 import httpService from '../services/http.service';
 
 export default function Admin() {
@@ -12,7 +15,10 @@ export default function Admin() {
    * TODO : Récupérer tous les recettes et contacts du serveur au chargement du Component
    * et mettre à jour les variables "recipes" et "contacts"
    */
-  React.useEffect(async () => {}, []);
+  React.useEffect(async () => {
+    setRecipes(await httpService.fetchAllRecipes());
+    setContacts(await httpService.fetchAllContacts());
+  }, []);
 
   /**
    * Envoie une demande de suppresion au serveur et recharge les recettes
@@ -50,10 +56,10 @@ export default function Admin() {
   const renderContent = () => {
     switch (render) {
       case 'recipes':
-        return recipes.map(() => <div />);
+        return recipes.map((recipe) => <div><AdminRecipe recipe={recipe} handleDelete={deleteRecipe}></AdminRecipe></div>);
       case 'contacts':
-        return contacts.map(() => <div />);
-      default:
+        return contacts.map((contact) => <div><AdminContact contact={contact} handleDelete={deleteContact}></AdminContact></div>);
+      default: //center differently (todo)
         return <p className='middle'>Cliquez sur un des boutons pour prendre une action</p>;
     }
   };

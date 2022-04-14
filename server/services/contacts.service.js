@@ -20,14 +20,16 @@ class ContactsService {
    * @returns les contacts de la collection
    */
   async getAllContacts () {
-    return [];
+    return await his.dbService.db.collection(CONTACTS_COLLECTION).find({}).toArray();
   }
 
   /**
    * TODO : Ajouter un nouveau contact dans la liste des contacts en écrivant dans la collection
    * @param {*} newContact : le nouveau contact à ajouter
    */
-  async addNewContact (contact) {}
+  async addNewContact (contact) {
+    await this.dbService.db.collection(CONTACTS_COLLECTION).insertOne(contact);
+  }
 
   /**
    * TODO : Supprimer le contact de la liste en fonction de son id
@@ -35,7 +37,9 @@ class ContactsService {
    * @returns le résultat de la modification
    */
   async deleteContactById (id) {
-    return undefined;
+    await this.dbService.db.collection(CONTACTS_COLLECTION).deleteOne({id: { $eq: parseInt(id) } });
+    //reset all the other ids (todo)
+    return await his.dbService.db.collection(CONTACTS_COLLECTION).find({}).toArray();
   }
 
   /**
