@@ -183,6 +183,11 @@ header nav > ul > li.active > a {
   background-color: #80c904;
   border-radius: 4px;
 }
+header nav > ul > li .activeNav {
+  padding: 10px 15px;
+  background-color: #80c904;
+  border-radius: 4px;
+}
 
 main {
   display: flex;
