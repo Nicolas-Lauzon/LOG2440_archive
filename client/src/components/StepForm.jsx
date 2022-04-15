@@ -27,11 +27,25 @@ export default function StepForm({ step, onChange }) {
 
       {/* TODO : Compléter le code HTML pour l'input de description de l'étape */}
       <label htmlFor={`step_description_${step.order}`}>Description de l'étape:</label>
-      <input type='text' name='text' required />
+      <input
+        type='text'
+        id={`step_description_${step.order}`}
+        name='text'
+        value={step.text}
+        onChange={handleChange}
+        required
+      />
 
       {/* TODO : Compléter le code HTML pour l'input de l'image de l'étape */}
       <label htmlFor={`img_step_${step.order}`}>Ajouter une image pour cette étape:</label>
-      <input type='file' accept='image/*' ref={imgRef} required />
+      <input
+        type='file'
+        id={`img_step_${step.order}`}
+        accept='image/*'
+        ref={imgRef}
+        onChange={handleChange}
+        required
+      />
     </fieldset>
   );
 }

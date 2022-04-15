@@ -58,7 +58,7 @@ export default function Admin() {
         return recipes.map((recipe) => <div><AdminRecipe recipe={recipe} handleDelete={deleteRecipe} /></div>);
       case 'contacts':
         return contacts.map((contact) => <div><AdminContact contact={contact} handleDelete={deleteContact} /></div>);
-      default: // center differently (todo)
+      default:
         return <p className='middle'>Cliquez sur un des boutons pour prendre une action</p>;
     }
   };

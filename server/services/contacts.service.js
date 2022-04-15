@@ -20,7 +20,7 @@ class ContactsService {
    * @returns les contacts de la collection
    */
   async getAllContacts () {
-    return await his.dbService.db.collection(CONTACTS_COLLECTION).find({}).toArray();
+    return await this.dbService.db.collection(CONTACTS_COLLECTION).find({}).toArray();
   }
 
   /**
