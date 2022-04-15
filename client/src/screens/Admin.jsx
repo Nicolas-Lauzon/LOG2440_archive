@@ -3,7 +3,6 @@ import AdminContact from '../components/AdminContact';
 import AdminRecipe from '../components/AdminRecipe';
 import NavBar from '../components/NavBar';
 import PageFooter from '../components/PageFooter';
-import StepCard from '../components/StepCard';
 import httpService from '../services/http.service';
 
 export default function Admin() {
@@ -56,10 +55,10 @@ export default function Admin() {
   const renderContent = () => {
     switch (render) {
       case 'recipes':
-        return recipes.map((recipe) => <div><AdminRecipe recipe={recipe} handleDelete={deleteRecipe}></AdminRecipe></div>);
+        return recipes.map((recipe) => <div><AdminRecipe recipe={recipe} handleDelete={deleteRecipe} /></div>);
       case 'contacts':
-        return contacts.map((contact) => <div><AdminContact contact={contact} handleDelete={deleteContact}></AdminContact></div>);
-      default: //center differently (todo)
+        return contacts.map((contact) => <div><AdminContact contact={contact} handleDelete={deleteContact} /></div>);
+      default: // center differently (todo)
         return <p className='middle'>Cliquez sur un des boutons pour prendre une action</p>;
     }
   };

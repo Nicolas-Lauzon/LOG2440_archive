@@ -18,6 +18,21 @@ export default function NavBar() {
               </NavLink>
             </li>
             {/* TODO : Ajouter des liens vers les pages /recipes, /add_recipe et /contact avec les bons titres */}
+            <li>
+              <NavLink to='./recipes' exact activeClassName='activeNav'>
+                Trouver une recette
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='./add_recipe' exact activeClassName='activeNav'>
+                Ajouter une recette
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='./contact' exact activeClassName='activeNav'>
+                Contact
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </div>
