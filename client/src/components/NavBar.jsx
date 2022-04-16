@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 export default function NavBar() {
+  // const sampleLocation = useLocation();
+  console.log(window.location.href);
   return (
     <header>
       <div className='header-container justify-container'>
@@ -33,6 +35,7 @@ export default function NavBar() {
                 Contact
               </NavLink>
             </li>
+            {(window.location.href === 'http://localhost:5010/admin') ? <li><NavLink to='./admin' exact activeClassName='activeNav'>Admin</NavLink></li> : null}
           </ul>
         </nav>
       </div>
