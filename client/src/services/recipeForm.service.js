@@ -31,6 +31,7 @@ class RecipeFormService {
       });
     });
     for (const step of recipeSteps) {
+      // console.log(step.img);
       recipe.steps.push({
         order: step.order,
         title: step.title,

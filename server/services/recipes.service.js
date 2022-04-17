@@ -64,8 +64,10 @@ class RecipesService {
    * @returns le résultat de la modification
    */
   async deleteRecipeById (id) {
-    await this.dbService.db.collection(RECIPES_COLLECTION).deleteOne({id: { $eq: parseInt(id) }});
-    //reset all the other ids (todo)
+    await this.dbService.db.collection(RECIPES_COLLECTION).deleteOne({ id: { $eq: parseInt(id) } });
+    const filter = { id: { $gt: parseInt(id) } };
+    const incQuery = { $inc: { id: -1 } };
+    await this.dbService.db.collection(RECIPES_COLLECTION).updateMany(filter, incQuery);
     return await this.dbService.db.collection(RECIPES_COLLECTION).find({}).toArray();
   }
 
@@ -74,6 +76,9 @@ class RecipesService {
    * @param {*} recipe : la nouvelle recette à ajouter
    */
   async addNewRecipe (recipe) {
+    const maxId = await this.dbService.db.collection(RECIPES_COLLECTION).find().sort({ id: -1 }).limit(1).toArray();
+    const idNewRecipe = maxId[0].id + 1;
+    recipe.id = idNewRecipe
     await this.dbService.db.collection(RECIPES_COLLECTION).insertOne(recipe);
   }
 

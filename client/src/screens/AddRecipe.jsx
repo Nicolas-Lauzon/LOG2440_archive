@@ -62,7 +62,7 @@ export default function AddRecipe() {
   const addRecipe = async (event) => {
     event.preventDefault();
     // TODO Envoyer la recette au serveur
-    await recipeFormService.submitForm(undefined, undefined);
+    await recipeFormService.submitForm(recipeInfos, steps);
     window.location.reload(false);
   };
 

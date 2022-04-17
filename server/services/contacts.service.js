@@ -28,6 +28,9 @@ class ContactsService {
    * @param {*} newContact : le nouveau contact à ajouter
    */
   async addNewContact (contact) {
+    const maxId = await this.dbService.db.collection(CONTACTS_COLLECTION).find().sort({ id: -1 }).limit(1).toArray();
+    const idNewContact = maxId[0].id + 1;
+    contact.id = idNewContact
     await this.dbService.db.collection(CONTACTS_COLLECTION).insertOne(contact);
   }
 
@@ -38,7 +41,9 @@ class ContactsService {
    */
   async deleteContactById (id) {
     await this.dbService.db.collection(CONTACTS_COLLECTION).deleteOne({id: { $eq: parseInt(id) } });
-    //reset all the other ids (todo)
+    const filter = { id: { $gt: parseInt(id) } };
+    const incQuery = { $inc: { id: -1 } };
+    await this.dbService.db.collection(CONTACTS_COLLECTION).updateMany(filter, incQuery);
     return await his.dbService.db.collection(CONTACTS_COLLECTION).find({}).toArray();
   }
 

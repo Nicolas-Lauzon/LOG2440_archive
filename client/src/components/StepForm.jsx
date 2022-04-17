@@ -40,6 +40,7 @@ export default function StepForm({ step, onChange }) {
       <label htmlFor={`img_step_${step.order}`}>Ajouter une image pour cette étape:</label>
       <input
         type='file'
+        name='img'
         id={`img_step_${step.order}`}
         accept='image/*'
         ref={imgRef}
