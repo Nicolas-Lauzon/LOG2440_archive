@@ -2,7 +2,7 @@ const { MongoMemoryServer } = require('mongodb-memory-server');
 const { dbService } = require('../services/database.service');
 const { RecipesService } = require('../services/recipes.service');
 
-describe('ContactsService tests', () => {
+describe('RecipeService tests', () => {
   let mongoServer;
   let uri = '';
   let service;

@@ -2,8 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 export default function NavBar() {
-  // const sampleLocation = useLocation();
-  console.log(window.location.href);
   return (
     <header>
       <div className='header-container justify-container'>

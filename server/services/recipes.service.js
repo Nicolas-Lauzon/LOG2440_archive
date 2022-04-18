@@ -65,9 +65,9 @@ class RecipesService {
    */
   async deleteRecipeById (id) {
     await this.dbService.db.collection(RECIPES_COLLECTION).deleteOne({ id: { $eq: parseInt(id) } });
-    const filter = { id: { $gt: parseInt(id) } };
-    const incQuery = { $inc: { id: -1 } };
-    await this.dbService.db.collection(RECIPES_COLLECTION).updateMany(filter, incQuery);
+    // const filter = { id: { $gt: parseInt(id) } };
+    // const incQuery = { $inc: { id: -1 } };
+    // await this.dbService.db.collection(RECIPES_COLLECTION).updateMany(filter, incQuery);
     return await this.dbService.db.collection(RECIPES_COLLECTION).find({}).toArray();
   }
 
@@ -76,9 +76,13 @@ class RecipesService {
    * @param {*} recipe : la nouvelle recette à ajouter
    */
   async addNewRecipe (recipe) {
-    const maxId = await this.dbService.db.collection(RECIPES_COLLECTION).find().sort({ id: -1 }).limit(1).toArray();
-    const idNewRecipe = maxId[0].id + 1;
-    recipe.id = idNewRecipe
+    let newId = 1;
+    let containsId = await this.dbService.db.collection(RECIPES_COLLECTION).findOne({ id: { $eq: parseInt(newId) } });
+    while (containsId !== null) {
+      newId++;
+      containsId = await this.dbService.db.collection(RECIPES_COLLECTION).findOne({ id: { $eq: parseInt(newId) } })
+    }
+    recipe.id = newId;
     await this.dbService.db.collection(RECIPES_COLLECTION).insertOne(recipe);
   }
 
