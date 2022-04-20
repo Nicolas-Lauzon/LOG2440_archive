@@ -1,0 +1,4 @@
+classroom_tools_url="https://github.com/ClassroomSuite/ClassroomTools"
+template_repo_fullname="LOG2440-20221/tp1"
+org_name="LOG2440-20221"
+repo_filter="tp1-"

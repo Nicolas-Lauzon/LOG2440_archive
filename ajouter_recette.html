@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Les recettes de PolyEats - Ajouter une recette</title>
+    <link rel="stylesheet" type="text/css"
+    href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <a href="./index.html">
+          <img class="logo" src="assets/img/logo.png" alt="logo"></img>
+        </a>
+        <nav>
+          <ul>
+            <li> <a href="./index.html">Accueil</a></li>
+            <li> <a href="./recettes.html">Trouver une recette</a></li>
+            <li class= "active" > <a href="./ajouter_recette.html">Ajouter une recette</a></li>
+            <li> <a href="./contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+
+    <main>
+      <form class="form-group">
+        <h1>Ajouter votre propre recette!</h1>
+        
+        <fieldset class="form-group">
+          <legend>Ajouter les informations de la recette</legend></br>
+          <label>Nom de la recette:</label>
+          <input type="text" name="nom de la recette" required>
+
+          <label>Sélectionner le type de recette:</label>
+          <select>
+            <option selected disabled>Choisissez</option>
+            <option>Végétarienne</option>
+            <option>Méditérranéenne</option>
+            <option>Keto</option>
+            <option>Autre</option>
+          </select>
+
+          <label>Temps de préparation (min):</label>
+          <input type="text" name="temps de preparation" required>
+
+          
+          <label>Ajouter la liste d'ingrédiants nécessaire (séparer les éléments par une virgule):</label>
+          <input type="text" name="liste d'ingrédient" required>
+
+          <label>Ajouter la liste des outils de cuisson nécessaire (séparer les éléments par une virgule):</label>
+          <input type="text" name="liste outils de cuisson" required>
+
+          <label>Ajouter une image pour votre recette:</label> 
+          <input type="file" name="Image nouvelle recette" accept=".png, .jpg" required>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <legend>Ajouter les étapes de la recette</legend></br>
+
+          <fieldset class="form-group fieldinfield">
+            <legend>Étape #1</legend>
+            <label>Nom de l'étape:</label>
+            <input type="text" name="Nom de l'étape" required>
+    
+            <label>Description de l'étape:</label>
+            <input type="text" name="Description de l'étape" required>
+    
+            <label>Ajouter une image pour cette étape:</label> 
+            <input type="file" name="Image étape" accept=".png, .jpg" required>
+          </fieldset>
+
+          <fieldset class="form-group fieldinfield">
+            <legend>Étape #2</legend>
+            <label>Nom de l'étape:</label>
+            <input type="text" name="Nom de l'étape" required>
+    
+            <label>Description de l'étape:</label>
+            <input type="text" name="Description de l'étape" required>
+    
+            <label>Ajouter une image pour cette étape:</label> 
+            <input type="file" name="Image étape" accept=".png, .jpg" required>
+          </fieldset>
+
+          <fieldset class="form-group fieldinfield">
+            <legend>Étape #3</legend>
+            <label>Nom de l'étape:</label>
+            <input type="text" name="Nom de l'étape" required>
+    
+            <label>Description de l'étape:</label>
+            <input type="text" name="Description de l'étape" required>
+    
+            <label>Ajouter une image pour cette étape:</label> 
+            <input type="file" name="Image étape" accept=".png, .jpg" required>
+          </fieldset>
+          
+        </fieldset>
+      
+
+        <input type="submit" class="btn" value="Ajouter la recette">
+      </form>
+
+    </main>
+    
+    
+    <footer class="piedDePage">
+      <p>Par : Nicolas Lauzon - 1959682 et Nour El Houda Lharch - 1886051</p>
+    </footer>
+  </body>
+</html>
