@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Les recettes de PolyEats - Trouver une recette</title>
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    <script type="module" src="./assets/js/recipes.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-container justify-container">
+        <div class="logo">
+          <a href="./index.html">
+            <img alt="logo" src="./assets/img/logo.png" title="Accueil" />
+          </a>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="./index.html">Accueil</a></li>
+            <li class="active">
+              <a href="./recipes.html">Trouver une recette</a>
+            </li>
+            <li><a href="./add_recipe.html">Ajouter une recette</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="recipes-type" aria-label="Filtres">
+        <h2>Catégories</h2>
+        <div class="btn-group" id="recipes-filters">
+          <button class="selected">Toutes les recettes</button>
+          <button id="vegetarien">Recettes végétariennes</button>
+          <button id="mediterraneen">Recettes méditerranéennes</button>
+          <button id="keto">Recettes ketos</button>
+        </div>
+      </section>
+      <article>
+        <span class="right-header" id="recipes-count">6 recettes</span>
+        <h1>Recettes</h1>
+        <div class="recipes" id="recipes-list">
+        </div>
+      </article>
+    </main>
+    <footer>
+      <p>Par étudiant.e 1 et étudiant.e 2</p>
+    </footer>
+  </body>
+</html>
