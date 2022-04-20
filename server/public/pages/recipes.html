@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Les recettes de PolyEats - Trouver une recette</title>
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <script type="module" src="../js/recipes.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-container justify-container">
+        <div class="logo">
+          <a href="/">
+            <img alt="logo" src="../img/logo.png" title="Accueil" />
+          </a>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/">Accueil</a></li>
+            <li class="active"><a href="./recipes">Trouver une recette</a></li>
+            <li><a href="./add_recipe">Ajouter une recette</a></li>
+            <li><a href="./contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="recipes-type" aria-label="Filtres">
+        <h2>Catégories</h2>
+        <div class="btn-group" id="recipes-filters">
+          <button class="selected">Toutes les recettes</button>
+          <button id="vegetarien">Recettes végétariennes</button>
+          <button id="mediterraneen">Recettes méditerranéennes</button>
+          <button id="keto">Recettes ketos</button>
+        </div>
+      </section>
+      <section class="recipes-type" aria-label="Recherche">
+        <h2>Recherche par ingrédient</h2>
+        <form action="#" id="search-form">
+          <div class="search-group">
+            <input type="search" id="search-bar" />
+            <input class="btn" id="search" type="submit" value="Rechercher" />
+          </div>
+          <div class="search-group">
+            <h3>Match exact</h3>
+            <label class="switch" for="match">
+              <input type="checkbox" id="match" />
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </form>
+      </section>
+      <article>
+        <span class="right-header" id="recipes-count">6 recettes</span>
+        <h1>Recettes</h1>
+        <div class="recipes" id="recipes-list"></div>
+      </article>
+    </main>
+    <footer>
+      <p>Par étudiant.e 1 et étudiant.e 2</p>
+    </footer>
+  </body>
+</html>

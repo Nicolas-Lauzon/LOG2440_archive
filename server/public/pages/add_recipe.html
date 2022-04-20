@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Les recettes de PolyEats - Ajouter une recette</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <script type="module" src="../js/add_recipe.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-container justify-container">
+        <div class="logo">
+          <a href="/">
+            <img alt="logo" src="../img/logo.png" title="Accueil" />
+          </a>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="./recipes">Trouver une recette</a></li>
+            <li class="active"><a href="./add_recipe">Ajouter une recette</a></li>
+            <li><a href="./contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <article>
+        <h1>Ajouter votre propre recette!</h1>
+        <br />
+
+        <form class="form-group" id="add-recipe-form">
+          <fieldset class="form-control">
+            <legend>Ajouter les informations de la recette</legend>
+
+            <label for="name">Nom de la recette:</label>
+            <input type="text" id="name" required />
+
+            <label for="type">Sélectionner le type de recette:</label>
+            <select id="type" required>
+              <option value="" disabled>Choisissez</option>
+              <option value="vegetarien">Végétarienne</option>
+              <option value="mediterraneen">Méditérranéenne</option>
+              <option value="keto">Keto</option>
+              <option value="autre">Autre</option>
+            </select>
+
+            <label for="time">Temps de préparation (min):</label>
+            <input type="text" id="time" required />
+
+            <label for="ingredient">Ajouter la liste d'ingrédients nécessaire (séparer les éléments (ingrédients:quantités) par une virgule):</label>
+            <input type="text" id="ingredient" required />
+
+            <label for="tool">Ajouter la liste des outils de cuisson nécessaire (séparer les éléments par une virgule):</label>
+            <input type="text" id="tool" required />
+
+            <label for="img">Ajouter une image pour votre recette:</label>
+            <input type="file" id="img" accept="image/*" required />
+          </fieldset>
+          <fieldset class="form-control" id="steps">
+            <legend>Ajouter les étapes de la recette</legend>
+            
+            <!---TODO : Générer le HTML avec JavaScript pour chaque nouvelle étape-->
+            <fieldset class="form-control">
+              <legend>Étape #1</legend>
+
+              <label for="step_name_1">Nom de l'étape:</label>
+              <input type="text" id="step_name_1" required />
+
+              <label for="step_description_1">Description de l'étape:</label>
+              <input type="text" id="step_description_1" required />
+
+              <label for="img_step_1">Ajouter une image pour cette étape:</label>
+              <input type="file" id="img_step_1" accept="image/*" required />
+            </fieldset>
+            <input id="add-step" class="btn" type="button" value="Ajouter une étape" />
+          </fieldset>
+
+          <input class="btn" type="submit" value="Ajouter la recette" />
+        </form>
+      </article>
+    </main>
+    <footer>
+      <p>Par étudiant.e 1 et étudiant.e 2</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Les recettes de PolyEats - Accueil</title>
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <script type="module" src="../js/admin.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-container justify-container">
+        <div class="logo">
+          <a href="/">
+            <img alt="logo" src="../img/logo.png" title="Accueil" />
+          </a>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/recipes">Trouver une recette</a></li>
+            <li><a href="/add_recipe">Ajouter une recette</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li class="active"><a href="/admin">Admin</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="admin-main">
+      <div class="admin-actions">
+        <button class="btn" id="display-recipes-btn">Afficher Recettes</button>
+        <button class="btn" id="display-contacts-btn">Afficher Contacts</button>
+        <button class="btn" id="reset-contacts-btn">Réinitialiser Recettes</button>
+      </div>
+      <section>
+        <p class="middle">Cliquez sur un des boutons pour prendre une action</p>
+      </section>
+    </main>
+    <footer>
+      <p>Par étudiant.e 1 et étudiant.e 2</p>
+    </footer>
+  </body>
+</html>

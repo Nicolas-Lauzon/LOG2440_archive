@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Les recettes de PolyEats - Recette</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <script type="module" src="../js/recipe.js"></script>
+  </head>
+  <body>
+    <!-- Source de la recette: https://www.chefcookit.com/recipes/bol_proteines_mexicain -->
+    <header>
+      <div class="header-container justify-container">
+        <div class="logo">
+          <a href="/">
+            <img alt="logo" src="../img/logo.png" title="Accueil" />
+          </a>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/">Accueil</a></li>
+            <li class="active"> <a href="./recipes">Trouver une recette</a></li>
+            <li><a href="./add_recipe">Ajouter une recette</a></li>
+            <li><a href="./contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <article id="recipe-article">
+        <h1 class="recipe-header"></h1>
+        <button class="btn" onclick="window.print()" id="print-btn">Imprimmer</button>
+        <div class="row">
+          <div class="col">
+            <img class="recipe-image" alt="Bol protéiné à la mexicaine" src="../img/bol_mexicain.jpg" />
+          </div>
+          <div class="col">
+            <section>
+              <h2>Liste d'ingrédients</h2>
+              <ul class="check-list" id="list-ingredients">
+                <!---TODO : Enlever le contenu du UL et générer le HTML avec JavaScript-->
+                <li><input type="checkbox" /><label>150g de quinoa blanc</label></li>
+              </ul>
+            </section>
+            <section>
+              <h2>Le nécessaire pour la cuisson</h2>
+              <ul class="check-list" id="tools-list">
+                <!---TODO : Enlever le contenu du UL et générer le HTML avec JavaScript-->
+                <li><input type="checkbox" /><label>Plaque de cuisson</label></li>
+              </ul>
+            </section>
+          </div>
+        </div>
+
+        <h1>Les étapes à suivre pour une recette réussite!</h1>
+        <div class="recipe-container">
+          <!---TODO : Enlever le contenu du DIV et générer le HTML avec JavaScript-->
+          <div class="recipe-step" id="recipe-step-1">
+            <img class="recipe-image" alt="Bol protéiné à la mexicaine, étape 1" src="../img/bol_mexicain_1.jpg" />
+            <h2>1. Faire les pois chiches croustillants</h2>
+            <p>
+              Préchauffer le four à 425°F et amener une casserole d'eau à ébullition. Étendre les
+              <b>pois chiches</b> sur une plaque de cuisson. Ajouter le <b>mélange d'épices</b>, au goût (attention! épicé) et un filet d'huile
+              d'olive. Si désiré, utiliser une épice appréciée des enfants pour une partie des pois chiche. Saler et poivrer et cuire au four
+              <u>20-25 minutes</u>.
+            </p>
+          </div>
+        </div>
+      </article>
+    </main>
+    <footer>
+      <p>Par étudiant.e 1 et étudiant.e 2</p>
+    </footer>
+  </body>
+</html>
